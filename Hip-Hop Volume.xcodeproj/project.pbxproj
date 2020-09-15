@@ -3,27 +3,170 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD0685EC2511528C0002FB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0685EB2511528C0002FB19 /* AppDelegate.swift */; };
-		CD0685EE2511528C0002FB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0685ED2511528C0002FB19 /* SceneDelegate.swift */; };
-		CD0685F02511528C0002FB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0685EF2511528C0002FB19 /* ViewController.swift */; };
-		CD0685F32511528C0002FB19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0685F12511528C0002FB19 /* Main.storyboard */; };
-		CD0685F5251152910002FB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0685F4251152910002FB19 /* Assets.xcassets */; };
-		CD0685F8251152910002FB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0685F6251152910002FB19 /* LaunchScreen.storyboard */; };
+		2D60D7BDA1E8ACA9EF26CD8A /* Pods_Hip_Hop_Volume.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */; };
+		CD0686612511556C0002FB19 /* AlbumsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068601251155680002FB19 /* AlbumsCell.swift */; };
+		CD0686622511556C0002FB19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068602251155680002FB19 /* SceneDelegate.swift */; };
+		CD0686632511556C0002FB19 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068604251155680002FB19 /* IAPHelper.swift */; };
+		CD0686642511556C0002FB19 /* IAPMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068605251155680002FB19 /* IAPMasterViewController.swift */; };
+		CD0686652511556C0002FB19 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068606251155680002FB19 /* ProductCell.swift */; };
+		CD0686662511556C0002FB19 /* HipHopVolumeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068607251155680002FB19 /* HipHopVolumeProducts.swift */; };
+		CD0686672511556C0002FB19 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068608251155690002FB19 /* ProfileViewController.swift */; };
+		CD0686682511556C0002FB19 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068609251155690002FB19 /* UserInfoCell.swift */; };
+		CD0686692511556C0002FB19 /* AdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860B251155690002FB19 /* AdTest.swift */; };
+		CD06866A2511556C0002FB19 /* AdMobTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860C251155690002FB19 /* AdMobTableViewVC.swift */; };
+		CD06866B2511556C0002FB19 /* IntersticialAdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860D251155690002FB19 /* IntersticialAdTest.swift */; };
+		CD06866C2511556C0002FB19 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860F251155690002FB19 /* SignUpVC.swift */; };
+		CD06866E2511556C0002FB19 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068612251155690002FB19 /* CommentVC.swift */; };
+		CD06866F2511556C0002FB19 /* SubCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068613251155690002FB19 /* SubCommentsVC.swift */; };
+		CD0686702511556C0002FB19 /* SubCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068614251155690002FB19 /* SubCommentsCell.swift */; };
+		CD0686712511556C0002FB19 /* SubCommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068615251155690002FB19 /* SubCommentVM.swift */; };
+		CD0686722511556C0002FB19 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068616251155690002FB19 /* CommentViewModel.swift */; };
+		CD0686732511556C0002FB19 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068617251155690002FB19 /* CommentCell.swift */; };
+		CD0686742511556C0002FB19 /* UserPfAndFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068618251155690002FB19 /* UserPfAndFollow.swift */; };
+		CD0686762511556C0002FB19 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06861A251155690002FB19 /* VideoPlayerView.swift */; };
+		CD0686772511556C0002FB19 /* AlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06861C251155690002FB19 /* AlbumVC.swift */; };
+		CD0686782511556C0002FB19 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06861D251155690002FB19 /* ProfileVC.swift */; };
+		CD0686792511556C0002FB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06861E251155690002FB19 /* ViewController.swift */; };
+		CD06867A2511556C0002FB19 /* FollowUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06861F251155690002FB19 /* FollowUsers.swift */; };
+		CD06867B2511556C0002FB19 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068620251155690002FB19 /* MenuBar.swift */; };
+		CD06867C2511556C0002FB19 /* TrackPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068621251155690002FB19 /* TrackPlay.swift */; };
+		CD06867D2511556C0002FB19 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068622251155690002FB19 /* HomeViewController.swift */; };
+		CD06867E2511556C0002FB19 /* ArtistProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068623251155690002FB19 /* ArtistProfileVC.swift */; };
+		CD06867F2511556C0002FB19 /* WhoToFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068624251155690002FB19 /* WhoToFollow.swift */; };
+		CD0686802511556C0002FB19 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068625251155690002FB19 /* ImageView.swift */; };
+		CD0686812511556C0002FB19 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068626251155690002FB19 /* MainView.swift */; };
+		CD0686832511556C0002FB19 /* AlbumTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068628251155690002FB19 /* AlbumTrackVC.swift */; };
+		CD0686872511556C0002FB19 /* PlayAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06862C2511556A0002FB19 /* PlayAudio.swift */; };
+		CD0686882511556C0002FB19 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD06862D2511556A0002FB19 /* Auth0.plist */; };
+		CD0686892511556C0002FB19 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06862F2511556A0002FB19 /* Models.swift */; };
+		CD06868A2511556C0002FB19 /* ArtistPFContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686312511556A0002FB19 /* ArtistPFContainerView.swift */; };
+		CD06868B2511556C0002FB19 /* ArtistTracksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686322511556A0002FB19 /* ArtistTracksCell.swift */; };
+		CD06868C2511556C0002FB19 /* ArtistAlbumsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686332511556A0002FB19 /* ArtistAlbumsCell.swift */; };
+		CD06868D2511556C0002FB19 /* ArtistVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686342511556A0002FB19 /* ArtistVideoCell.swift */; };
+		CD06868E2511556C0002FB19 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686352511556A0002FB19 /* FollowButton.swift */; };
+		CD06868F2511556C0002FB19 /* PostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686372511556A0002FB19 /* PostListViewModel.swift */; };
+		CD0686902511556C0002FB19 /* IntersticialAdVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686382511556A0002FB19 /* IntersticialAdVM.swift */; };
+		CD0686912511556C0002FB19 /* ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686392511556A0002FB19 /* ViewModels.swift */; };
+		CD0686942511556C0002FB19 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06863D2511556A0002FB19 /* MainTabBarController.swift */; };
+		CD0686952511556C0002FB19 /* TracksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06863E2511556A0002FB19 /* TracksCell.swift */; };
+		CD0686962511556C0002FB19 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06863F2511556B0002FB19 /* Spinner.swift */; };
+		CD0686972511556C0002FB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686402511556B0002FB19 /* AppDelegate.swift */; };
+		CD0686982511556C0002FB19 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686412511556B0002FB19 /* VideoCell.swift */; };
+		CD0686992511556C0002FB19 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686422511556B0002FB19 /* AuthVC.swift */; };
+		CD06869B2511556C0002FB19 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686442511556B0002FB19 /* VideoTableViewCell.swift */; };
+		CD06869C2511556C0002FB19 /* CustomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686452511556B0002FB19 /* CustomToolBar.swift */; };
+		CD06869D2511556C0002FB19 /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686462511556B0002FB19 /* EmailTextField.swift */; };
+		CD06869E2511556C0002FB19 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686472511556B0002FB19 /* EditProfileVC.swift */; };
+		CD06869F2511556C0002FB19 /* FollowerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686482511556B0002FB19 /* FollowerButton.swift */; };
+		CD0686A02511556C0002FB19 /* AuthorizationServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686492511556B0002FB19 /* AuthorizationServer.swift */; };
+		CD0686A12511556C0002FB19 /* NotificationTrackPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06864B2511556B0002FB19 /* NotificationTrackPlay.swift */; };
+		CD0686A22511556C0002FB19 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06864C2511556B0002FB19 /* NotificationCell.swift */; };
+		CD0686A32511556C0002FB19 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06864D2511556B0002FB19 /* NotificationVC.swift */; };
+		CD0686A42511556C0002FB19 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06864E2511556B0002FB19 /* NotificationViewModel.swift */; };
+		CD0686A52511556C0002FB19 /* NotificationAlbumsTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06864F2511556B0002FB19 /* NotificationAlbumsTrack.swift */; };
+		CD0686A62511556C0002FB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0686502511556B0002FB19 /* Assets.xcassets */; };
+		CD0686A72511556C0002FB19 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686522511556C0002FB19 /* ImageCache.swift */; };
+		CD0686A82511556C0002FB19 /* PostRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686532511556C0002FB19 /* PostRequests.swift */; };
+		CD0686A92511556C0002FB19 /* ImageToServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686542511556C0002FB19 /* ImageToServer.swift */; };
+		CD0686AA2511556C0002FB19 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686552511556C0002FB19 /* ImageLoader.swift */; };
+		CD0686AB2511556C0002FB19 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686562511556C0002FB19 /* ImageDownloader.swift */; };
+		CD0686AC2511556C0002FB19 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686572511556C0002FB19 /* Webservice.swift */; };
+		CD0686AD2511556C0002FB19 /* PutPatchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686582511556C0002FB19 /* PutPatchRequests.swift */; };
+		CD0686AE2511556C0002FB19 /* DLTRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686592511556C0002FB19 /* DLTRequests.swift */; };
+		CD0686AF2511556C0002FB19 /* DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865A2511556C0002FB19 /* DownloadImage.swift */; };
+		CD0686B02511556C0002FB19 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865B2511556C0002FB19 /* SessionManager.swift */; };
+		CD0686B12511556C0002FB19 /* UsernameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865C2511556C0002FB19 /* UsernameTextField.swift */; };
+		CD0686B22511556C0002FB19 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865E2511556C0002FB19 /* Toolbar.swift */; };
+		CD0686B32511556C0002FB19 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865F2511556C0002FB19 /* FeedCell.swift */; };
+		CD0686B5251157130002FB19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0686B4251157130002FB19 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47DED1379C1F5C555DC84754 /* Pods-Hip-Hop Volume.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hip-Hop Volume.debug.xcconfig"; path = "Target Support Files/Pods-Hip-Hop Volume/Pods-Hip-Hop Volume.debug.xcconfig"; sourceTree = "<group>"; };
+		A5CDDD899CF8A0A7933CF547 /* Pods-Hip-Hop Volume.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hip-Hop Volume.release.xcconfig"; path = "Target Support Files/Pods-Hip-Hop Volume/Pods-Hip-Hop Volume.release.xcconfig"; sourceTree = "<group>"; };
 		CD0685E82511528C0002FB19 /* Hip-Hop Volume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hip-Hop Volume.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD0685EB2511528C0002FB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD0685ED2511528C0002FB19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CD0685EF2511528C0002FB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD0685F22511528C0002FB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CD0685F4251152910002FB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD0685F7251152910002FB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CD0685F9251152910002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0685FF251155670002FB19 /* Hip-Hop Volume-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hip-Hop Volume-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD068601251155680002FB19 /* AlbumsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsCell.swift; sourceTree = "<group>"; };
+		CD068602251155680002FB19 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../Downloads/HipHopVolumeMobile-06a07b3cbaf6766aa3936b1cfdc47a173797a290/VolumeiOS/SceneDelegate.swift"; sourceTree = "<group>"; };
+		CD068604251155680002FB19 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		CD068605251155680002FB19 /* IAPMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPMasterViewController.swift; sourceTree = "<group>"; };
+		CD068606251155680002FB19 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		CD068607251155680002FB19 /* HipHopVolumeProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HipHopVolumeProducts.swift; sourceTree = "<group>"; };
+		CD068608251155690002FB19 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CD068609251155690002FB19 /* UserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
+		CD06860B251155690002FB19 /* AdTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdTest.swift; sourceTree = "<group>"; };
+		CD06860C251155690002FB19 /* AdMobTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdMobTableViewVC.swift; sourceTree = "<group>"; };
+		CD06860D251155690002FB19 /* IntersticialAdTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersticialAdTest.swift; sourceTree = "<group>"; };
+		CD06860F251155690002FB19 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		CD068612251155690002FB19 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		CD068613251155690002FB19 /* SubCommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentsVC.swift; sourceTree = "<group>"; };
+		CD068614251155690002FB19 /* SubCommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentsCell.swift; sourceTree = "<group>"; };
+		CD068615251155690002FB19 /* SubCommentVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentVM.swift; sourceTree = "<group>"; };
+		CD068616251155690002FB19 /* CommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		CD068617251155690002FB19 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		CD068618251155690002FB19 /* UserPfAndFollow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPfAndFollow.swift; sourceTree = "<group>"; };
+		CD06861A251155690002FB19 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		CD06861C251155690002FB19 /* AlbumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumVC.swift; sourceTree = "<group>"; };
+		CD06861D251155690002FB19 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		CD06861E251155690002FB19 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD06861F251155690002FB19 /* FollowUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUsers.swift; sourceTree = "<group>"; };
+		CD068620251155690002FB19 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		CD068621251155690002FB19 /* TrackPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPlay.swift; sourceTree = "<group>"; };
+		CD068622251155690002FB19 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CD068623251155690002FB19 /* ArtistProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistProfileVC.swift; sourceTree = "<group>"; };
+		CD068624251155690002FB19 /* WhoToFollow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoToFollow.swift; sourceTree = "<group>"; };
+		CD068625251155690002FB19 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		CD068626251155690002FB19 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CD068628251155690002FB19 /* AlbumTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTrackVC.swift; sourceTree = "<group>"; };
+		CD06862C2511556A0002FB19 /* PlayAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayAudio.swift; sourceTree = "<group>"; };
+		CD06862D2511556A0002FB19 /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		CD06862F2511556A0002FB19 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		CD0686312511556A0002FB19 /* ArtistPFContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistPFContainerView.swift; sourceTree = "<group>"; };
+		CD0686322511556A0002FB19 /* ArtistTracksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistTracksCell.swift; sourceTree = "<group>"; };
+		CD0686332511556A0002FB19 /* ArtistAlbumsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistAlbumsCell.swift; sourceTree = "<group>"; };
+		CD0686342511556A0002FB19 /* ArtistVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistVideoCell.swift; sourceTree = "<group>"; };
+		CD0686352511556A0002FB19 /* FollowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
+		CD0686372511556A0002FB19 /* PostListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostListViewModel.swift; sourceTree = "<group>"; };
+		CD0686382511556A0002FB19 /* IntersticialAdVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersticialAdVM.swift; sourceTree = "<group>"; };
+		CD0686392511556A0002FB19 /* ViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		CD06863D2511556A0002FB19 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		CD06863E2511556A0002FB19 /* TracksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksCell.swift; sourceTree = "<group>"; };
+		CD06863F2511556B0002FB19 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		CD0686402511556B0002FB19 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../Downloads/HipHopVolumeMobile-06a07b3cbaf6766aa3936b1cfdc47a173797a290/VolumeiOS/AppDelegate.swift"; sourceTree = "<group>"; };
+		CD0686412511556B0002FB19 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		CD0686422511556B0002FB19 /* AuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
+		CD0686442511556B0002FB19 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		CD0686452511556B0002FB19 /* CustomToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomToolBar.swift; sourceTree = "<group>"; };
+		CD0686462511556B0002FB19 /* EmailTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
+		CD0686472511556B0002FB19 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		CD0686482511556B0002FB19 /* FollowerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowerButton.swift; sourceTree = "<group>"; };
+		CD0686492511556B0002FB19 /* AuthorizationServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationServer.swift; sourceTree = "<group>"; };
+		CD06864B2511556B0002FB19 /* NotificationTrackPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTrackPlay.swift; sourceTree = "<group>"; };
+		CD06864C2511556B0002FB19 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		CD06864D2511556B0002FB19 /* NotificationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		CD06864E2511556B0002FB19 /* NotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		CD06864F2511556B0002FB19 /* NotificationAlbumsTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationAlbumsTrack.swift; sourceTree = "<group>"; };
+		CD0686502511556B0002FB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Downloads/HipHopVolumeMobile-06a07b3cbaf6766aa3936b1cfdc47a173797a290/VolumeiOS/Assets.xcassets"; sourceTree = "<group>"; };
+		CD0686522511556C0002FB19 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		CD0686532511556C0002FB19 /* PostRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequests.swift; sourceTree = "<group>"; };
+		CD0686542511556C0002FB19 /* ImageToServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageToServer.swift; sourceTree = "<group>"; };
+		CD0686552511556C0002FB19 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		CD0686562511556C0002FB19 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		CD0686572511556C0002FB19 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		CD0686582511556C0002FB19 /* PutPatchRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutPatchRequests.swift; sourceTree = "<group>"; };
+		CD0686592511556C0002FB19 /* DLTRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLTRequests.swift; sourceTree = "<group>"; };
+		CD06865A2511556C0002FB19 /* DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadImage.swift; sourceTree = "<group>"; };
+		CD06865B2511556C0002FB19 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		CD06865C2511556C0002FB19 /* UsernameTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameTextField.swift; sourceTree = "<group>"; };
+		CD06865E2511556C0002FB19 /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		CD06865F2511556C0002FB19 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		CD0686B4251157130002FB19 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CD0686B8251159E60002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hip_Hop_Volume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +174,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D60D7BDA1E8ACA9EF26CD8A /* Pods_Hip_Hop_Volume.framework in Frameworks */,
+				CD0686B5251157130002FB19 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E1AF5F55DC00CE93CEE84C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47DED1379C1F5C555DC84754 /* Pods-Hip-Hop Volume.debug.xcconfig */,
+				A5CDDD899CF8A0A7933CF547 /* Pods-Hip-Hop Volume.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD0685DF2511528B0002FB19 = {
 			isa = PBXGroup;
 			children = (
 				CD0685EA2511528C0002FB19 /* Hip-Hop Volume */,
 				CD0685E92511528C0002FB19 /* Products */,
+				3E1AF5F55DC00CE93CEE84C4 /* Pods */,
+				F1432FE998285FC8A9ABAF45 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +212,181 @@
 		CD0685EA2511528C0002FB19 /* Hip-Hop Volume */ = {
 			isa = PBXGroup;
 			children = (
-				CD0685EB2511528C0002FB19 /* AppDelegate.swift */,
-				CD0685ED2511528C0002FB19 /* SceneDelegate.swift */,
-				CD0685EF2511528C0002FB19 /* ViewController.swift */,
-				CD0685F12511528C0002FB19 /* Main.storyboard */,
-				CD0685F4251152910002FB19 /* Assets.xcassets */,
-				CD0685F6251152910002FB19 /* LaunchScreen.storyboard */,
-				CD0685F9251152910002FB19 /* Info.plist */,
+				CD06860A251155690002FB19 /* AdMob */,
+				CD068601251155680002FB19 /* AlbumsCell.swift */,
+				CD0686402511556B0002FB19 /* AppDelegate.swift */,
+				CD0686302511556A0002FB19 /* ArtistPF */,
+				CD0686502511556B0002FB19 /* Assets.xcassets */,
+				CD06862D2511556A0002FB19 /* Auth0.plist */,
+				CD06860E251155690002FB19 /* Authentication */,
+				CD0686492511556B0002FB19 /* AuthorizationServer.swift */,
+				CD0686422511556B0002FB19 /* AuthVC.swift */,
+				CD068611251155690002FB19 /* Comments */,
+				CD0686452511556B0002FB19 /* CustomToolBar.swift */,
+				CD0686472511556B0002FB19 /* EditProfileVC.swift */,
+				CD0686462511556B0002FB19 /* EmailTextField.swift */,
+				CD06865F2511556C0002FB19 /* FeedCell.swift */,
+				CD0686352511556A0002FB19 /* FollowButton.swift */,
+				CD0686482511556B0002FB19 /* FollowerButton.swift */,
+				CD068603251155680002FB19 /* IAP */,
+				CD06862E2511556A0002FB19 /* Models */,
+				CD06864A2511556B0002FB19 /* Notifications */,
+				CD06862C2511556A0002FB19 /* PlayAudio.swift */,
+				CD068608251155690002FB19 /* ProfileViewController.swift */,
+				CD068602251155680002FB19 /* SceneDelegate.swift */,
+				CD0686512511556C0002FB19 /* Services */,
+				CD06865B2511556C0002FB19 /* SessionManager.swift */,
+				CD06863F2511556B0002FB19 /* Spinner.swift */,
+				CD06863C2511556A0002FB19 /* TabBar */,
+				CD06865E2511556C0002FB19 /* Toolbar.swift */,
+				CD06863E2511556A0002FB19 /* TracksCell.swift */,
+				CD068609251155690002FB19 /* UserInfoCell.swift */,
+				CD06865C2511556C0002FB19 /* UsernameTextField.swift */,
+				CD068618251155690002FB19 /* UserPfAndFollow.swift */,
+				CD0686412511556B0002FB19 /* VideoCell.swift */,
+				CD06861A251155690002FB19 /* VideoPlayerView.swift */,
+				CD0686442511556B0002FB19 /* VideoTableViewCell.swift */,
+				CD06861B251155690002FB19 /* View */,
+				CD0686362511556A0002FB19 /* View Models */,
+				CD0685FF251155670002FB19 /* Hip-Hop Volume-Bridging-Header.h */,
+				CD0686B8251159E60002FB19 /* Info.plist */,
 			);
 			path = "Hip-Hop Volume";
+			sourceTree = "<group>";
+		};
+		CD068603251155680002FB19 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				CD068604251155680002FB19 /* IAPHelper.swift */,
+				CD068605251155680002FB19 /* IAPMasterViewController.swift */,
+				CD068606251155680002FB19 /* ProductCell.swift */,
+				CD068607251155680002FB19 /* HipHopVolumeProducts.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
+		CD06860A251155690002FB19 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				CD06860B251155690002FB19 /* AdTest.swift */,
+				CD06860C251155690002FB19 /* AdMobTableViewVC.swift */,
+				CD06860D251155690002FB19 /* IntersticialAdTest.swift */,
+			);
+			path = AdMob;
+			sourceTree = "<group>";
+		};
+		CD06860E251155690002FB19 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CD06860F251155690002FB19 /* SignUpVC.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CD068611251155690002FB19 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				CD068612251155690002FB19 /* CommentVC.swift */,
+				CD068613251155690002FB19 /* SubCommentsVC.swift */,
+				CD068614251155690002FB19 /* SubCommentsCell.swift */,
+				CD068615251155690002FB19 /* SubCommentVM.swift */,
+				CD068616251155690002FB19 /* CommentViewModel.swift */,
+				CD068617251155690002FB19 /* CommentCell.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		CD06861B251155690002FB19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD06861C251155690002FB19 /* AlbumVC.swift */,
+				CD06861D251155690002FB19 /* ProfileVC.swift */,
+				CD06861E251155690002FB19 /* ViewController.swift */,
+				CD06861F251155690002FB19 /* FollowUsers.swift */,
+				CD068620251155690002FB19 /* MenuBar.swift */,
+				CD068621251155690002FB19 /* TrackPlay.swift */,
+				CD068622251155690002FB19 /* HomeViewController.swift */,
+				CD068623251155690002FB19 /* ArtistProfileVC.swift */,
+				CD068624251155690002FB19 /* WhoToFollow.swift */,
+				CD068625251155690002FB19 /* ImageView.swift */,
+				CD068626251155690002FB19 /* MainView.swift */,
+				CD068628251155690002FB19 /* AlbumTrackVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD06862E2511556A0002FB19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD06862F2511556A0002FB19 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD0686302511556A0002FB19 /* ArtistPF */ = {
+			isa = PBXGroup;
+			children = (
+				CD0686312511556A0002FB19 /* ArtistPFContainerView.swift */,
+				CD0686322511556A0002FB19 /* ArtistTracksCell.swift */,
+				CD0686332511556A0002FB19 /* ArtistAlbumsCell.swift */,
+				CD0686342511556A0002FB19 /* ArtistVideoCell.swift */,
+			);
+			path = ArtistPF;
+			sourceTree = "<group>";
+		};
+		CD0686362511556A0002FB19 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD0686372511556A0002FB19 /* PostListViewModel.swift */,
+				CD0686382511556A0002FB19 /* IntersticialAdVM.swift */,
+				CD0686392511556A0002FB19 /* ViewModels.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		CD06863C2511556A0002FB19 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CD06863D2511556A0002FB19 /* MainTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		CD06864A2511556B0002FB19 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CD06864B2511556B0002FB19 /* NotificationTrackPlay.swift */,
+				CD06864C2511556B0002FB19 /* NotificationCell.swift */,
+				CD06864D2511556B0002FB19 /* NotificationVC.swift */,
+				CD06864E2511556B0002FB19 /* NotificationViewModel.swift */,
+				CD06864F2511556B0002FB19 /* NotificationAlbumsTrack.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		CD0686512511556C0002FB19 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CD0686522511556C0002FB19 /* ImageCache.swift */,
+				CD0686532511556C0002FB19 /* PostRequests.swift */,
+				CD0686542511556C0002FB19 /* ImageToServer.swift */,
+				CD0686552511556C0002FB19 /* ImageLoader.swift */,
+				CD0686562511556C0002FB19 /* ImageDownloader.swift */,
+				CD0686572511556C0002FB19 /* Webservice.swift */,
+				CD0686582511556C0002FB19 /* PutPatchRequests.swift */,
+				CD0686592511556C0002FB19 /* DLTRequests.swift */,
+				CD06865A2511556C0002FB19 /* DownloadImage.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F1432FE998285FC8A9ABAF45 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD0686B4251157130002FB19 /* StoreKit.framework */,
+				CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +396,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD0685FC251152910002FB19 /* Build configuration list for PBXNativeTarget "Hip-Hop Volume" */;
 			buildPhases = (
+				18D2482F9461EE54E6E6BE9C /* [CP] Check Pods Manifest.lock */,
 				CD0685E42511528C0002FB19 /* Sources */,
 				CD0685E52511528C0002FB19 /* Frameworks */,
 				CD0685E62511528C0002FB19 /* Resources */,
+				5269BFEA13ED0AED88C1C60E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +423,7 @@
 				TargetAttributes = {
 					CD0685E72511528C0002FB19 = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1170;
 					};
 				};
 			};
@@ -125,45 +450,136 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0685F8251152910002FB19 /* LaunchScreen.storyboard in Resources */,
-				CD0685F5251152910002FB19 /* Assets.xcassets in Resources */,
-				CD0685F32511528C0002FB19 /* Main.storyboard in Resources */,
+				CD0686A62511556C0002FB19 /* Assets.xcassets in Resources */,
+				CD0686882511556C0002FB19 /* Auth0.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18D2482F9461EE54E6E6BE9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hip-Hop Volume-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5269BFEA13ED0AED88C1C60E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hip-Hop Volume/Pods-Hip-Hop Volume-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hip-Hop Volume/Pods-Hip-Hop Volume-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hip-Hop Volume/Pods-Hip-Hop Volume-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD0685E42511528C0002FB19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0685F02511528C0002FB19 /* ViewController.swift in Sources */,
-				CD0685EC2511528C0002FB19 /* AppDelegate.swift in Sources */,
-				CD0685EE2511528C0002FB19 /* SceneDelegate.swift in Sources */,
+				CD0686792511556C0002FB19 /* ViewController.swift in Sources */,
+				CD0686692511556C0002FB19 /* AdTest.swift in Sources */,
+				CD0686712511556C0002FB19 /* SubCommentVM.swift in Sources */,
+				CD0686772511556C0002FB19 /* AlbumVC.swift in Sources */,
+				CD0686662511556C0002FB19 /* HipHopVolumeProducts.swift in Sources */,
+				CD0686762511556C0002FB19 /* VideoPlayerView.swift in Sources */,
+				CD0686A82511556C0002FB19 /* PostRequests.swift in Sources */,
+				CD0686632511556C0002FB19 /* IAPHelper.swift in Sources */,
+				CD0686812511556C0002FB19 /* MainView.swift in Sources */,
+				CD0686802511556C0002FB19 /* ImageView.swift in Sources */,
+				CD06868D2511556C0002FB19 /* ArtistVideoCell.swift in Sources */,
+				CD0686962511556C0002FB19 /* Spinner.swift in Sources */,
+				CD0686AA2511556C0002FB19 /* ImageLoader.swift in Sources */,
+				CD06868E2511556C0002FB19 /* FollowButton.swift in Sources */,
+				CD0686AE2511556C0002FB19 /* DLTRequests.swift in Sources */,
+				CD0686642511556C0002FB19 /* IAPMasterViewController.swift in Sources */,
+				CD0686A72511556C0002FB19 /* ImageCache.swift in Sources */,
+				CD06867E2511556C0002FB19 /* ArtistProfileVC.swift in Sources */,
+				CD06868A2511556C0002FB19 /* ArtistPFContainerView.swift in Sources */,
+				CD0686A92511556C0002FB19 /* ImageToServer.swift in Sources */,
+				CD0686742511556C0002FB19 /* UserPfAndFollow.swift in Sources */,
+				CD0686992511556C0002FB19 /* AuthVC.swift in Sources */,
+				CD0686B22511556C0002FB19 /* Toolbar.swift in Sources */,
+				CD06866E2511556C0002FB19 /* CommentVC.swift in Sources */,
+				CD06866F2511556C0002FB19 /* SubCommentsVC.swift in Sources */,
+				CD0686782511556C0002FB19 /* ProfileVC.swift in Sources */,
+				CD0686892511556C0002FB19 /* Models.swift in Sources */,
+				CD0686A02511556C0002FB19 /* AuthorizationServer.swift in Sources */,
+				CD0686952511556C0002FB19 /* TracksCell.swift in Sources */,
+				CD0686902511556C0002FB19 /* IntersticialAdVM.swift in Sources */,
+				CD0686B32511556C0002FB19 /* FeedCell.swift in Sources */,
+				CD06867B2511556C0002FB19 /* MenuBar.swift in Sources */,
+				CD0686872511556C0002FB19 /* PlayAudio.swift in Sources */,
+				CD0686722511556C0002FB19 /* CommentViewModel.swift in Sources */,
+				CD0686B02511556C0002FB19 /* SessionManager.swift in Sources */,
+				CD06869D2511556C0002FB19 /* EmailTextField.swift in Sources */,
+				CD06866A2511556C0002FB19 /* AdMobTableViewVC.swift in Sources */,
+				CD06867F2511556C0002FB19 /* WhoToFollow.swift in Sources */,
+				CD06868B2511556C0002FB19 /* ArtistTracksCell.swift in Sources */,
+				CD0686652511556C0002FB19 /* ProductCell.swift in Sources */,
+				CD06866B2511556C0002FB19 /* IntersticialAdTest.swift in Sources */,
+				CD0686AD2511556C0002FB19 /* PutPatchRequests.swift in Sources */,
+				CD0686A12511556C0002FB19 /* NotificationTrackPlay.swift in Sources */,
+				CD06869F2511556C0002FB19 /* FollowerButton.swift in Sources */,
+				CD0686A32511556C0002FB19 /* NotificationVC.swift in Sources */,
+				CD0686AC2511556C0002FB19 /* Webservice.swift in Sources */,
+				CD0686A22511556C0002FB19 /* NotificationCell.swift in Sources */,
+				CD06867D2511556C0002FB19 /* HomeViewController.swift in Sources */,
+				CD0686A42511556C0002FB19 /* NotificationViewModel.swift in Sources */,
+				CD0686A52511556C0002FB19 /* NotificationAlbumsTrack.swift in Sources */,
+				CD06868F2511556C0002FB19 /* PostListViewModel.swift in Sources */,
+				CD0686982511556C0002FB19 /* VideoCell.swift in Sources */,
+				CD0686612511556C0002FB19 /* AlbumsCell.swift in Sources */,
+				CD0686702511556C0002FB19 /* SubCommentsCell.swift in Sources */,
+				CD06867C2511556C0002FB19 /* TrackPlay.swift in Sources */,
+				CD0686832511556C0002FB19 /* AlbumTrackVC.swift in Sources */,
+				CD06869C2511556C0002FB19 /* CustomToolBar.swift in Sources */,
+				CD0686732511556C0002FB19 /* CommentCell.swift in Sources */,
+				CD06868C2511556C0002FB19 /* ArtistAlbumsCell.swift in Sources */,
+				CD06869B2511556C0002FB19 /* VideoTableViewCell.swift in Sources */,
+				CD0686912511556C0002FB19 /* ViewModels.swift in Sources */,
+				CD0686672511556C0002FB19 /* ProfileViewController.swift in Sources */,
+				CD0686B12511556C0002FB19 /* UsernameTextField.swift in Sources */,
+				CD06869E2511556C0002FB19 /* EditProfileVC.swift in Sources */,
+				CD0686AB2511556C0002FB19 /* ImageDownloader.swift in Sources */,
+				CD0686972511556C0002FB19 /* AppDelegate.swift in Sources */,
+				CD06866C2511556C0002FB19 /* SignUpVC.swift in Sources */,
+				CD0686AF2511556C0002FB19 /* DownloadImage.swift in Sources */,
+				CD06867A2511556C0002FB19 /* FollowUsers.swift in Sources */,
+				CD0686622511556C0002FB19 /* SceneDelegate.swift in Sources */,
+				CD0686682511556C0002FB19 /* UserInfoCell.swift in Sources */,
+				CD0686942511556C0002FB19 /* MainTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		CD0685F12511528C0002FB19 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD0685F22511528C0002FB19 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CD0685F6251152910002FB19 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD0685F7251152910002FB19 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CD0685FA251152910002FB19 /* Debug */ = {
@@ -282,9 +698,12 @@
 		};
 		CD0685FD251152910002FB19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47DED1379C1F5C555DC84754 /* Pods-Hip-Hop Volume.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V3293SR39E;
 				INFOPLIST_FILE = "Hip-Hop Volume/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -292,6 +711,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dillondavis.Hip-Hop-Volume";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hip-Hop Volume/Hip-Hop Volume-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,9 +720,12 @@
 		};
 		CD0685FE251152910002FB19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5CDDD899CF8A0A7933CF547 /* Pods-Hip-Hop Volume.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V3293SR39E;
 				INFOPLIST_FILE = "Hip-Hop Volume/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +733,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dillondavis.Hip-Hop-Volume";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hip-Hop Volume/Hip-Hop Volume-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
