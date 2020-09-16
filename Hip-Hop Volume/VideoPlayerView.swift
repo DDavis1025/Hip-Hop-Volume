@@ -425,9 +425,8 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
             }
             print("video path \(self.path)")
             var components = URLComponents()
-            components.scheme = "http"
-            components.host = "localhost"
-            components.port = 8000
+            components.scheme = "https"
+            components.host = "hiphopvolumebucket.s3.amazonaws.com"
             if let path = self.path {
             components.path = "/\(path)"
             if let url = components.url?.absoluteString {

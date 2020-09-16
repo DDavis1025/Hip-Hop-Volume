@@ -52,11 +52,9 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
     print("post Album \(post)")
     viewController = ViewController(post:post)
     
-       components.scheme = "http"
-       components.host = "localhost"
+       components.scheme = "https"
+       components.host = "hiphopvolumebucket.s3.amazonaws.com"
     
-     
-       components.port = 8000
     
     super.init(nibName: nil, bundle: nil)
     

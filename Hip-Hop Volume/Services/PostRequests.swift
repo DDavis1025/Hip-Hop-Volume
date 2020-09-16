@@ -18,7 +18,7 @@ struct FollowerPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -56,7 +56,7 @@ struct CommentPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -98,7 +98,7 @@ struct CommentLikePostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -139,7 +139,7 @@ struct SubCommentLikePostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -182,7 +182,7 @@ struct CommentsPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -225,7 +225,7 @@ struct LikeRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "http://localhost:8000/\(endpoint)"
+        let resourceString = "https://hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL

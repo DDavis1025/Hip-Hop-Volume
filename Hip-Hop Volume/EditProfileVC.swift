@@ -249,11 +249,19 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     }
     
     
+    var components:URLComponents = {
+        var component = URLComponents()
+        component.scheme = "https"
+        component.host = "hiphopvolumebucket.s3.amazonaws.com"
+        
+        return component
+    }()
+
+    
     func userPhotoUpload() {
         var component = URLComponents()
-        component.scheme = "http"
-        component.host = "localhost"
-        component.port = 8000
+        component.scheme = "https"
+        component.host = "hiphopvolume.com"
         component.path = "/upload"
         let editPF = EditPFStruct()
         let imageToServer = ImageToServer()
@@ -263,9 +271,8 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
                 let getPhoto = GETUserPhotoByID(id: self.user_profile!.sub)
                 getPhoto.getPhotoById {
                     var component2 = URLComponents()
-                    component2.scheme = "http"
-                    component2.host = "127.0.0.1"
-                    component2.port = 8000
+                    component2.scheme = "https"
+                    component2.host = "hiphopvolumebucket.s3.amazonaws.com"
                     self.photo = $0
                     if let photo_path = self.photo![0].path {
                     component2.path = "/\(photo_path)"

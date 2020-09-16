@@ -19,9 +19,8 @@ class DLTFollowingRequest {
     
     func delete(completion: @escaping(Error?) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
         if let user_id = user_id, let follower_id = follower_id {
         components.path = "/following/\(user_id)/\(follower_id)"
         }
@@ -62,9 +61,9 @@ class DLTCommentLike {
     
     func delete(completion: @escaping(Error?) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
+        
         if let comment_id = comment_id, let user_id = user_id {
         components.path = "/deleteCommentLike/\(comment_id)/\(user_id)"
         }
@@ -107,9 +106,8 @@ class DLTComment {
     
     func delete(completion: @escaping(Error?) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
         if let comment_id = comment_id, let user_id = user_id, let path = path {
         components.path = "/\(path)/\(comment_id)/\(user_id)"
         }
@@ -150,9 +148,8 @@ class DLTLike {
     
     func delete(completion: @escaping(Error?) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
         if let post_id = post_id, let supporter_id = supporter_id {
         components.path = "/deletePostLike/\(post_id)/\(supporter_id)"
         }

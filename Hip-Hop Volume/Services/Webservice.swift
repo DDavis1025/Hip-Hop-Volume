@@ -18,7 +18,7 @@ struct AccessToken {
 
 class Webservice {
     func getAllPosts(completion: @escaping ([Post]) -> ()) {
-        guard let url = URL(string: "http://localhost:8000/albums")
+        guard let url = URL(string: "https://hiphopvolume.com/albums")
      else {
      fatalError("URL is not correct!")
     }
@@ -53,7 +53,7 @@ class GetAllOfMediaType {
     }
     func getAllPosts(completion: @escaping ([Post]) -> ()) {
         if let path = self.path {
-        guard let url = URL(string: "http://localhost:8000/\(path)")
+        guard let url = URL(string: "https://hiphopvolume.com/\(path)")
      else {
      fatalError("URL is not correct!")
     }
@@ -87,9 +87,8 @@ class GETAlbum: Identifiable {
         
     func getPostsById(completion: @escaping (Post) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
         components.path = "/albums/\(id)"
         guard let url = URL(string: components.url!.absoluteString)
         else {
@@ -127,9 +126,8 @@ class SecondWebService: Identifiable {
         
     func getAllPostsById(completion: @escaping ([PostById]) -> ()) {
         var components = URLComponents()
-           components.scheme = "http"
-           components.host = "localhost"
-           components.port = 8000
+           components.scheme = "https"
+           components.host = "hiphopvolume.com"
            components.path = "/albums/\(id)"
         guard let url = URL(string: components.url!.absoluteString)
         else {
@@ -274,9 +272,8 @@ class GETArtistById: Identifiable {
     func getAllById(completion: @escaping ([ArtistModel]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/artist/\(id)"
                   
                  let url = components.url
@@ -316,9 +313,8 @@ class GETArtistById2: Identifiable {
     func getAllById(completion: @escaping ([ArtistModel]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   
                  let url = components.url
@@ -355,9 +351,8 @@ class GETUsersByFollowerId: Identifiable {
     func getAllById(completion: @escaping ([Following]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/following/\(id)"
                   
                  let url = components.url
@@ -399,9 +394,8 @@ class GETFollowersByUserID: Identifiable {
     func getAllById(completion: @escaping ([Follows]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/follows/\(id)"
                   
                  let url = components.url
@@ -437,9 +431,8 @@ class GETUserPhotoByID: Identifiable {
     func getPhotoById(completion: @escaping ([UserPhoto]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/user/\(id)"
                   
                  let url = components.url
@@ -585,9 +578,8 @@ class GetMedia{
     
     func getMedia(completion: @escaping ([MediaPath]) -> ()) {
         var components = URLComponents()
-        components.scheme = "http"
-        components.host = "localhost"
-        components.port = 8000
+        components.scheme = "https"
+        components.host = "hiphopvolume.com"
         components.path = "/\(path)/\(id)"
         
         
@@ -630,9 +622,8 @@ class GETComments: Identifiable {
     func getAllById(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   
                  let url = components.url
@@ -683,9 +674,8 @@ class GETSubComments: Identifiable {
 //        let queryItems = [URLQueryItem(name: "offset", value: offset), URLQueryItem(name: "replyFrom", value: jumpedToReply[0]), URLQueryItem(name: "replyTo", value: jumpedToReply[1]) ]
          let queryItems = [URLQueryItem(name: "offset", value: offset)]
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   components.queryItems = queryItems
                   
@@ -731,9 +721,8 @@ class GETCommentLikes: Identifiable {
     func getAllById(completion: @escaping ([CommentLikes]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/commentLikes/\(id)"
                   
                  let url = components.url
@@ -780,9 +769,9 @@ class GETCommentLikesByUserID: Identifiable {
     func getAllById(completion: @escaping ([CommentLikes]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
+                  
         if let comment_id = comment_id, let user_id = user_id {
                   components.path = "/commentLikesByUserID/\(comment_id)/\(user_id)"
         }
@@ -829,9 +818,8 @@ class GETSubCommentAfterReply: Identifiable {
     func getSubComment(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/singleComment/\(id)/\(user_id)"
                   
                  let url = components.url
@@ -879,9 +867,8 @@ class GETCommentByUser: Identifiable {
     func getComments(completion: @escaping ([UserAndComment]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/commentByUser/\(id)/\(user_id)"
                   
                  let url = components.url
@@ -925,9 +912,8 @@ class GETNotificationsByUserID: Identifiable {
     func getNotifications(completion: @escaping ([Notifications]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getNotications/\(user_id)"
                   
                  let url = components.url
@@ -972,9 +958,8 @@ class GETPostImageById: Identifiable {
     func getPost(completion: @escaping ([PostImage]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getPostImage/\(id)"
                   
                  let url = components.url
@@ -1022,9 +1007,8 @@ class GETSongData: Identifiable {
     func getSong(completion: @escaping ([Song]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getSongData/\(id)"
                   
                  let url = components.url
@@ -1070,9 +1054,8 @@ class NotificationSubComment: Identifiable {
     func getComments(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getSubCommentsNoticationsById/\(id)"
                   
                  let url = components.url
@@ -1120,9 +1103,8 @@ class ParentSubCommentAndReply: Identifiable {
     func getComments(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getParentSubCommentAndReply/\(reply_id)/\(parentsubcommentid)"
                   
                  let url = components.url
@@ -1168,9 +1150,8 @@ class GETCommentById: Identifiable {
     func getComment(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/getComment/\(id)"
                   
                  let url = components.url
@@ -1218,9 +1199,8 @@ class GETMediaById: Identifiable {
     func getMedia(completion: @escaping ([PostById]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   
                  let url = components.url
@@ -1274,9 +1254,8 @@ class GETLikeRequest: Identifiable {
     func getLike(completion: @escaping ([LikeModel]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
               if let path = path, let post_id = post_id, let supporter_id = supporter_id {
                   components.path = "/\(path)/\(post_id)/\(supporter_id)"
               } else if let path = path, let post_id = post_id {
@@ -1325,9 +1304,8 @@ class GETByID: Identifiable {
         
     func getById(completion: @escaping ([PostById]) -> ()) {
         var components = URLComponents()
-           components.scheme = "http"
-           components.host = "localhost"
-           components.port = 8000
+           components.scheme = "https"
+           components.host = "hiphopvolume.com"
            components.path = "/\(path)/\(id)"
         
         print("get by id url \(components.url?.absoluteString)")
@@ -1437,9 +1415,8 @@ class GETFollows: Identifiable {
         
     func getFollows(completion: @escaping ([Follow]) -> ()) {
         var components = URLComponents()
-           components.scheme = "http"
-           components.host = "localhost"
-           components.port = 8000
+           components.scheme = "https"
+           components.host = "hiphopvolume.com"
            components.path = "/\(path)/\(user_id)/\(follower_id)"
         
         print("get by id url \(components.url?.absoluteString)")
@@ -1488,9 +1465,8 @@ class GETCommentsRequest: Identifiable {
     func getAllById(completion: @escaping ([Comments]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   
                  let url = components.url
@@ -1539,9 +1515,8 @@ class GETNotifications: Identifiable {
     func getAllById(completion: @escaping ([Notifications]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(id)"
                   
                  let url = components.url
@@ -1588,9 +1563,8 @@ class GETUser: Identifiable {
     func getAllById(completion: @escaping ([UsersModel2]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume"
                   components.path = "/\(path)/\(id)/"
         
                   
@@ -1637,9 +1611,8 @@ class GETUserName: Identifiable {
     func getAllById(completion: @escaping ([UsersModel2]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "localhost"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/\(path)/\(username)/"
         
                   

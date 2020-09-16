@@ -30,9 +30,9 @@ class ViewController: Toolbar, UITableViewDelegate, UITableViewDataSource {
     var trackPath:[String]?
     var components:URLComponents = {
            var component = URLComponents()
-           component.scheme = "http"
-           component.host = "localhost"
-           component.port = 8000
+           component.scheme = "https"
+           component.host = "hiphopvolumebucket.s3.amazonaws.com"
+           
            return component
        }()
     let modelClass = ModelClass()

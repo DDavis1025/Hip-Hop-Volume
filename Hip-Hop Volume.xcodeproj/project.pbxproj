@@ -83,6 +83,7 @@
 		CD0686B22511556C0002FB19 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865E2511556C0002FB19 /* Toolbar.swift */; };
 		CD0686B32511556C0002FB19 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865F2511556C0002FB19 /* FeedCell.swift */; };
 		CD0686B5251157130002FB19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0686B4251157130002FB19 /* StoreKit.framework */; };
+		CD0686BB25115D110002FB19 /* AdMobTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686BA25115D110002FB19 /* AdMobTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +167,7 @@
 		CD06865F2511556C0002FB19 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		CD0686B4251157130002FB19 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CD0686B8251159E60002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD0686BA25115D110002FB19 /* AdMobTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobTest.swift; sourceTree = "<group>"; };
 		CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hip_Hop_Volume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				CD0686362511556A0002FB19 /* View Models */,
 				CD0685FF251155670002FB19 /* Hip-Hop Volume-Bridging-Header.h */,
 				CD0686B8251159E60002FB19 /* Info.plist */,
+				CD0686BA25115D110002FB19 /* AdMobTest.swift */,
 			);
 			path = "Hip-Hop Volume";
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				CD0686632511556C0002FB19 /* IAPHelper.swift in Sources */,
 				CD0686812511556C0002FB19 /* MainView.swift in Sources */,
 				CD0686802511556C0002FB19 /* ImageView.swift in Sources */,
+				CD0686BB25115D110002FB19 /* AdMobTest.swift in Sources */,
 				CD06868D2511556C0002FB19 /* ArtistVideoCell.swift in Sources */,
 				CD0686962511556C0002FB19 /* Spinner.swift in Sources */,
 				CD0686AA2511556C0002FB19 /* ImageLoader.swift in Sources */,
