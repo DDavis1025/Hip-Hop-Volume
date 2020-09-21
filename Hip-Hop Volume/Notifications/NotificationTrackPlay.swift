@@ -228,8 +228,8 @@ class NotificationTrackPlay: UIViewController {
           userAndFollow.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
           userAndFollow.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
           userAndFollow.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+          userAndFollow.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09).isActive = true
           userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-          userAndFollow.view.heightAnchor.constraint(equalToConstant: 80).isActive = true
           completion()
         }
          

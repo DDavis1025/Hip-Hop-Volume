@@ -121,11 +121,13 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
           userAndFollow.didMove(toParent: self)
           self.view.bringSubviewToFront(userAndFollow.view)
           userAndFollow.view.translatesAutoresizingMaskIntoConstraints = false
-          userAndFollow.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+          userAndFollow.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
           userAndFollow.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
           userAndFollow.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-          userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-          userAndFollow.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
+//          userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//          userAndFollow.view.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            userAndFollow.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09).isActive = true
+            userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         }
          
     }
@@ -159,18 +161,18 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
     
     func setImageViewConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 290).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.27).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         if let userAndFollow = userAndFollow?.view {
-            imageView.topAnchor.constraint(equalTo: userAndFollow.bottomAnchor, constant: 20).isActive = true
+            imageView.topAnchor.constraint(equalTo: userAndFollow.bottomAnchor, constant: 5).isActive = true
         }
 }
     
     func addLabels() {
         albumTitle = UILabel()
         let boldText = "Title: "
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrs)
 
         let normalText = (post!.title)!
@@ -183,7 +185,7 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
         albumDescription = UILabel()
         
         let boldTextDesc = "Description: "
-        let attrsDesc = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)]
+        let attrsDesc = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]
         let attributedStringDesc = NSMutableAttributedString(string:boldTextDesc, attributes:attrsDesc)
 
         let normalTextDesc = (post!.description)!
@@ -205,14 +207,14 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
             self.albumTitle?.translatesAutoresizingMaskIntoConstraints = false
             self.albumDescription?.translatesAutoresizingMaskIntoConstraints = false
                                                                          
-            albumTitle?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+            albumTitle?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 14).isActive = true
             
-            albumDescription?.topAnchor.constraint(equalTo: albumTitle!.bottomAnchor, constant: 20).isActive = true
+            albumDescription?.topAnchor.constraint(equalTo: albumTitle!.bottomAnchor, constant: 9).isActive = true
             
             albumTitle?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
               albumTitle?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
            
-            albumDescription?.numberOfLines = 3
+            albumDescription?.numberOfLines = 2
 //            albumDescription?.lineBreakMode = .byWordWrapping
              albumDescription?.adjustsFontSizeToFitWidth = false
              albumDescription?.lineBreakMode = .byTruncatingTail
@@ -234,7 +236,7 @@ class AlbumVC: Toolbar, FollowDelegateProtocol {
         viewController?.view.translatesAutoresizingMaskIntoConstraints = false
         viewController?.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
               
-        viewController?.view.topAnchor.constraint(equalTo: albumDescription!.bottomAnchor, constant: 20).isActive = true
+        viewController?.view.topAnchor.constraint(equalTo: albumDescription!.bottomAnchor, constant: 7).isActive = true
 
         viewController?.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 

@@ -40,6 +40,8 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     var profile = SessionManager.shared.profile
     var interstitial: GADInterstitial!
     var numberOfNext = NumberOfNext()
+    var goBackTrue:Bool? = false
+    var goForwardTrue:Bool? = false
     
     var track_id:String?
     var fromNotificationCell:Bool?
@@ -180,6 +182,13 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
         view.isUserInteractionEnabled = true
+        if goForwardTrue == true {
+            view.isUserInteractionEnabled = true
+            self.goForwardFunctions()
+        } else if goBackTrue == true {
+            view.isUserInteractionEnabled = true
+            self.goBackFunctions()
+        }
         if ModelClass.playing! {
             player?.play()
         }
@@ -190,7 +199,6 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     func openAd() {
         guard let player = player else { return }
         if interstitial.isReady {
-            //          player.pause()
             interstitial.present(fromRootViewController: self)
         } else {
             print("Ad wasn't ready")
@@ -294,8 +302,8 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
             userAndFollow.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
             userAndFollow.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             userAndFollow.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            userAndFollow.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09).isActive = true
             userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-            userAndFollow.view.heightAnchor.constraint(equalToConstant: 80).isActive = true
             completion()
         }
         
@@ -321,11 +329,11 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         
         //        albumNameLabel?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         //        albumNameLabel?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        albumNameLabel?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        albumNameLabel?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
         
         //        trackNameLabel?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         //        trackNameLabel?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        trackNameLabel?.topAnchor.constraint(equalTo: albumNameLabel!.bottomAnchor, constant: 20).isActive = true
+        trackNameLabel?.topAnchor.constraint(equalTo: albumNameLabel!.bottomAnchor, constant: 7).isActive = true
         
         albumNameLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         trackNameLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -356,15 +364,14 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         if let userView = userAndFollow?.view {
-            imageView.topAnchor.constraint(equalTo: userView.bottomAnchor, constant: 20).isActive = true
+            imageView.topAnchor.constraint(equalTo: userView.bottomAnchor, constant: 5).isActive = true
         } else {
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         }
         
         
-        imageView.widthAnchor.constraint(equalToConstant: 290).isActive = true
-        
-        imageView.heightAnchor.constraint(equalToConstant: 290).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.27).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         
         imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
@@ -430,63 +437,23 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     }
     
     @objc func goBackBtnClicked(_: UIButton) {
-        var index = ModelClass.index
-        print("index go back \(index)")
-        if NumberOfNext.numberOfNext == 13 {
-            view.isUserInteractionEnabled = false
-        }
-        if index! > 0 {
-            index! -= 1
-            modelClass.updateIndex(newInt: index!)
-            if let trackName = ModelClass.listArray![index!].name {
-                modelClass.updateTrackNameLabel(newText: trackName)
-            }
-            if let index = index {
-                if let path = ModelClass.listArray?[index].path {
-                    components.path =  "/\(path)"
-                }
-            }
-            if let index = index {
-                if let post_id = ModelClass.listArray?[index].id {
-                    modelClass.updatePostID(newString: post_id)
-                }
-            }
-            if let supporter_id = profile?.sub, let post_id = ModelClass.post_id {
-                GETLikeRequest(path: "postLikeByUserID", post_id: post_id, supporter_id: supporter_id).getLike {
-                    if $0.count > 0 {
-                        let likeBtnConfig = UIImage.SymbolConfiguration(pointSize: 25.0, weight: .medium, scale: .medium)
-                        self.likeBtn?.setImage(UIImage(systemName: "heart.fill", withConfiguration: likeBtnConfig), for: .normal)
-                        self.likeBtn?.tintColor = UIColor.red
-                        self.modelClass.updateIsLiked(newBool: true)
-                    } else {
-                        let likeBtnConfig = UIImage.SymbolConfiguration(pointSize: 25.0, weight: .medium, scale: .medium)
-                        self.likeBtn?.setImage(UIImage(systemName: "heart", withConfiguration: likeBtnConfig), for: .normal)
-                        self.likeBtn?.tintColor = UIColor.black
-                        self.modelClass.updateIsLiked(newBool: false)
-                    }
-                }
-            } else {
-                print("track_id \(track_id) + supporter_id \(profile?.sub)")
-            }
-            if let post_id = ModelClass.post_id {
-                GETLikeRequest(path: "getLikesByPostID", post_id: post_id, supporter_id: nil).getLike {
-                    self.numberOfLikes.text = "\($0.count)"
-                }
-            }
-            
-            if NumberOfNext.numberOfNext <= 12{
+            if NumberOfNext.numberOfNext <= 12 {
                 var number = NumberOfNext.numberOfNext
                 number += 1
-                print("number now \(number)")
+                self.goBackFunctions()
                 numberOfNext.updateNumberOfNext(newInt: number)
-                play(url: components.url! as NSURL)
-            }
-            if NumberOfNext.numberOfNext == 13 {
-                openAd()
-                play(url: components.url! as NSURL)
+                print("numberOfNext <= 1 \(NumberOfNext.numberOfNext)")
+//                play(url: components.url! as NSURL)
+            } else if NumberOfNext.numberOfNext == 13 {
+                view.isUserInteractionEnabled = false
+                print("numberOfNext == 2 \(NumberOfNext.numberOfNext)")
                 player?.pause()
-                numberOfNext.updateNumberOfNext(newInt: 0)
-            } else if NumberOfNext.numberOfNext == 12  {
+                openAd()
+                goBackTrue = true
+//                self.play(url: self.components.url! as NSURL)
+                self.numberOfNext.updateNumberOfNext(newInt: 0)
+            }
+               if NumberOfNext.numberOfNext == 12  {
                 let intersticialAdVM = IntersticialAdVM()
                 intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
                 //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
@@ -495,19 +462,39 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                 //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
                 TrackPlayVC.shared.interstitial?.load(GADRequest())
             }
-            trackNameLabel?.text = ModelClass.listArray![index!].name
-            
-            //            play(url: components.url! as NSURL)
-            
-            print("url gb \(components.url! as NSURL)")
-        }
-        
     }
     
     @objc func goForwardBtnClicked(_: UIButton) {
-        if NumberOfNext.numberOfNext == 13 {
-            view.isUserInteractionEnabled = false
-        }
+            if NumberOfNext.numberOfNext <= 12 {
+                goForwardFunctions()
+                var number = NumberOfNext.numberOfNext
+                number += 1
+                print("numberOfNext <= 1 \(NumberOfNext.numberOfNext)")
+                numberOfNext.updateNumberOfNext(newInt: number)
+//                play(url: components.url! as NSURL)
+            } else if NumberOfNext.numberOfNext == 13 {
+//                self.play(url: self.components.url! as NSURL)
+                view.isUserInteractionEnabled = false
+                player?.pause()
+                openAd()
+                goForwardTrue = true
+                print("numberOfNext == 2 \(NumberOfNext.numberOfNext)")
+//                    self.goForwardFunctions()
+                self.numberOfNext.updateNumberOfNext(newInt: 0)
+            }
+               if NumberOfNext.numberOfNext == 12  {
+                let intersticialAdVM = IntersticialAdVM()
+                intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
+                //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
+                print("intersticial album track \(intersticialAdVM.interstitial)")
+                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+                //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
+                TrackPlayVC.shared.interstitial?.load(GADRequest())
+            }
+            
+    }
+    
+    func goForwardFunctions() {
         var index = ModelClass.index
         if index! < ModelClass.listArray!.count - 1 {
             index! += 1
@@ -549,32 +536,64 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                     self.numberOfLikes.text = "\($0.count)"
                 }
             }
-            if NumberOfNext.numberOfNext <= 12{
-                var number = NumberOfNext.numberOfNext
-                number += 1
-                print("number now \(number)")
-                numberOfNext.updateNumberOfNext(newInt: number)
-                play(url: components.url! as NSURL)
-            }
-            if NumberOfNext.numberOfNext == 13 {
-                openAd()
-                play(url: components.url! as NSURL)
-                player?.pause()
-                numberOfNext.updateNumberOfNext(newInt: 0)
-            } else if NumberOfNext.numberOfNext == 12  {
-                let intersticialAdVM = IntersticialAdVM()
-                intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
-                //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
-                print("intersticial album track \(intersticialAdVM.interstitial)")
-                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
-                //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
-                TrackPlayVC.shared.interstitial?.load(GADRequest())
-            }
+            play(url: components.url! as NSURL)
             
             trackNameLabel?.text = ModelClass.listArray![index!].name
             //        play(url: components.url! as NSURL)
             print("url gf \(components.url! as NSURL)")
         }
+    }
+    
+    func goBackFunctions() {
+        var index = ModelClass.index
+               print("index go back \(index)")
+               if index! > 0 {
+                   index! -= 1
+                   modelClass.updateIndex(newInt: index!)
+                   if let trackName = ModelClass.listArray![index!].name {
+                       modelClass.updateTrackNameLabel(newText: trackName)
+                   }
+                   if let index = index {
+                       if let path = ModelClass.listArray?[index].path {
+                           components.path =  "/\(path)"
+                       }
+                   }
+                   if let index = index {
+                       if let post_id = ModelClass.listArray?[index].id {
+                           modelClass.updatePostID(newString: post_id)
+                       }
+                   }
+                   if let supporter_id = profile?.sub, let post_id = ModelClass.post_id {
+                       GETLikeRequest(path: "postLikeByUserID", post_id: post_id, supporter_id: supporter_id).getLike {
+                           if $0.count > 0 {
+                               let likeBtnConfig = UIImage.SymbolConfiguration(pointSize: 25.0, weight: .medium, scale: .medium)
+                               self.likeBtn?.setImage(UIImage(systemName: "heart.fill", withConfiguration: likeBtnConfig), for: .normal)
+                               self.likeBtn?.tintColor = UIColor.red
+                               self.modelClass.updateIsLiked(newBool: true)
+                           } else {
+                               let likeBtnConfig = UIImage.SymbolConfiguration(pointSize: 25.0, weight: .medium, scale: .medium)
+                               self.likeBtn?.setImage(UIImage(systemName: "heart", withConfiguration: likeBtnConfig), for: .normal)
+                               self.likeBtn?.tintColor = UIColor.black
+                               self.modelClass.updateIsLiked(newBool: false)
+                           }
+                       }
+                   } else {
+                       print("track_id \(track_id) + supporter_id \(profile?.sub)")
+                   }
+                   if let post_id = ModelClass.post_id {
+                       GETLikeRequest(path: "getLikesByPostID", post_id: post_id, supporter_id: nil).getLike {
+                           self.numberOfLikes.text = "\($0.count)"
+                       }
+                   }
+                
+                   play(url: components.url! as NSURL)
+                   
+                   trackNameLabel?.text = ModelClass.listArray![index!].name
+                   
+                   //            play(url: components.url! as NSURL)
+                   
+                   print("url gb \(components.url! as NSURL)")
+               }
     }
     
     @objc func albumTracksBtnClicked(_: UIButton) {
@@ -679,11 +698,11 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         
         button?.centerXAnchor.constraint(equalTo: self.mySlider!.centerXAnchor).isActive = true
         
-        button?.topAnchor.constraint(equalTo: self.timeElapsedLabel.bottomAnchor, constant: 20).isActive = true
+        button?.topAnchor.constraint(equalTo: self.timeElapsedLabel.bottomAnchor, constant: 7).isActive = true
         
-        button?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        button?.widthAnchor.constraint(equalToConstant: 42).isActive = true
         
-        button?.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button?.heightAnchor.constraint(equalToConstant: 42).isActive = true
         
         goBackBtn?.leadingAnchor.constraint(equalTo: self.button!.leadingAnchor, constant: -60).isActive = true
         

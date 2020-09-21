@@ -92,7 +92,7 @@ class ArtistAlbumsCell: UICollectionViewCell, UITableViewDelegate, UITableViewDa
            spinnerView.translatesAutoresizingMaskIntoConstraints = false
            
            spinnerView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-           spinnerView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+           spinnerView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor).isActive = true
            
            spinnerView.addSubview(spinner)
            spinner.translatesAutoresizingMaskIntoConstraints = false

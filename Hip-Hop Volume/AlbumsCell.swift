@@ -193,12 +193,12 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 
         view.translatesAutoresizingMaskIntoConstraints = false
 
-        view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        view.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+//        view.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+//        view.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         view.addSubview(spinner)
         spinner.translatesAutoresizingMaskIntoConstraints = false

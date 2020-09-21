@@ -221,8 +221,8 @@ class UserPfAndFollow: UIViewController, FollowDelegateProtocol {
                userImageView?.translatesAutoresizingMaskIntoConstraints = false
                userImageView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
                userImageView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-               userImageView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
-               userImageView?.heightAnchor.constraint(equalToConstant: 50).isActive = true
+               userImageView?.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.95).isActive = true
+               userImageView?.widthAnchor.constraint(equalTo:  userImageView!.heightAnchor).isActive = true
                user?.translatesAutoresizingMaskIntoConstraints = false
                user?.leadingAnchor.constraint(equalTo: userImageView!.trailingAnchor, constant: 10).isActive = true
                user?.centerYAnchor.constraint(equalTo: userImageView!.centerYAnchor).isActive = true

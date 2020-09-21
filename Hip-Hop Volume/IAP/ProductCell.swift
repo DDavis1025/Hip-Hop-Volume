@@ -18,12 +18,22 @@ class ProductCell: UITableViewCell {
     
     return formatter
   }()
-  
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+      super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
   var buyButtonHandler: ((_ product: SKProduct) -> Void)?
   
   var product: SKProduct? {
     didSet {
       guard let product = product else { return }
+        
+      print("detailTextLabel \(detailTextLabel)")
      
       textLabel?.text = product.localizedTitle
      
@@ -31,9 +41,11 @@ class ProductCell: UITableViewCell {
         accessoryType = .checkmark
         accessoryView = nil
         detailTextLabel?.text = ""
+        print("isPurchased")
       } else if IAPHelper.canMakePayments() {
         ProductCell.priceFormatter.locale = product.priceLocale
         detailTextLabel?.text = ProductCell.priceFormatter.string(from: product.price)
+        print("\(ProductCell.priceFormatter.string(from: product.price)) product now")
      
         accessoryType = .none
         accessoryView = self.newBuyButton()

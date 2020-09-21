@@ -117,7 +117,8 @@ extension IAPMasterViewController {
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ProductCell
-    
+
+
     let product = products[indexPath.row]
     
     cell.product = product

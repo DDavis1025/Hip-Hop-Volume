@@ -21,9 +21,6 @@
 		CD06866B2511556C0002FB19 /* IntersticialAdTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860D251155690002FB19 /* IntersticialAdTest.swift */; };
 		CD06866C2511556C0002FB19 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06860F251155690002FB19 /* SignUpVC.swift */; };
 		CD06866E2511556C0002FB19 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068612251155690002FB19 /* CommentVC.swift */; };
-		CD06866F2511556C0002FB19 /* SubCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068613251155690002FB19 /* SubCommentsVC.swift */; };
-		CD0686702511556C0002FB19 /* SubCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068614251155690002FB19 /* SubCommentsCell.swift */; };
-		CD0686712511556C0002FB19 /* SubCommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068615251155690002FB19 /* SubCommentVM.swift */; };
 		CD0686722511556C0002FB19 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068616251155690002FB19 /* CommentViewModel.swift */; };
 		CD0686732511556C0002FB19 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068617251155690002FB19 /* CommentCell.swift */; };
 		CD0686742511556C0002FB19 /* UserPfAndFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD068618251155690002FB19 /* UserPfAndFollow.swift */; };
@@ -84,6 +81,7 @@
 		CD0686B32511556C0002FB19 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06865F2511556C0002FB19 /* FeedCell.swift */; };
 		CD0686B5251157130002FB19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0686B4251157130002FB19 /* StoreKit.framework */; };
 		CD0686BB25115D110002FB19 /* AdMobTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686BA25115D110002FB19 /* AdMobTest.swift */; };
+		CD0686BD2513B9120002FB19 /* NoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686BC2513B9120002FB19 /* NoAds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,9 +102,6 @@
 		CD06860D251155690002FB19 /* IntersticialAdTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntersticialAdTest.swift; sourceTree = "<group>"; };
 		CD06860F251155690002FB19 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		CD068612251155690002FB19 /* CommentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
-		CD068613251155690002FB19 /* SubCommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentsVC.swift; sourceTree = "<group>"; };
-		CD068614251155690002FB19 /* SubCommentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentsCell.swift; sourceTree = "<group>"; };
-		CD068615251155690002FB19 /* SubCommentVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCommentVM.swift; sourceTree = "<group>"; };
 		CD068616251155690002FB19 /* CommentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		CD068617251155690002FB19 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		CD068618251155690002FB19 /* UserPfAndFollow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPfAndFollow.swift; sourceTree = "<group>"; };
@@ -168,6 +163,7 @@
 		CD0686B4251157130002FB19 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CD0686B8251159E60002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0686BA25115D110002FB19 /* AdMobTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobTest.swift; sourceTree = "<group>"; };
+		CD0686BC2513B9120002FB19 /* NoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAds.swift; sourceTree = "<group>"; };
 		CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hip_Hop_Volume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -264,6 +260,7 @@
 				CD068605251155680002FB19 /* IAPMasterViewController.swift */,
 				CD068606251155680002FB19 /* ProductCell.swift */,
 				CD068607251155680002FB19 /* HipHopVolumeProducts.swift */,
+				CD0686BC2513B9120002FB19 /* NoAds.swift */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -290,9 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				CD068612251155690002FB19 /* CommentVC.swift */,
-				CD068613251155690002FB19 /* SubCommentsVC.swift */,
-				CD068614251155690002FB19 /* SubCommentsCell.swift */,
-				CD068615251155690002FB19 /* SubCommentVM.swift */,
 				CD068616251155690002FB19 /* CommentViewModel.swift */,
 				CD068617251155690002FB19 /* CommentCell.swift */,
 			);
@@ -509,11 +503,11 @@
 			files = (
 				CD0686792511556C0002FB19 /* ViewController.swift in Sources */,
 				CD0686692511556C0002FB19 /* AdTest.swift in Sources */,
-				CD0686712511556C0002FB19 /* SubCommentVM.swift in Sources */,
 				CD0686772511556C0002FB19 /* AlbumVC.swift in Sources */,
 				CD0686662511556C0002FB19 /* HipHopVolumeProducts.swift in Sources */,
 				CD0686762511556C0002FB19 /* VideoPlayerView.swift in Sources */,
 				CD0686A82511556C0002FB19 /* PostRequests.swift in Sources */,
+				CD0686BD2513B9120002FB19 /* NoAds.swift in Sources */,
 				CD0686632511556C0002FB19 /* IAPHelper.swift in Sources */,
 				CD0686812511556C0002FB19 /* MainView.swift in Sources */,
 				CD0686802511556C0002FB19 /* ImageView.swift in Sources */,
@@ -532,7 +526,6 @@
 				CD0686992511556C0002FB19 /* AuthVC.swift in Sources */,
 				CD0686B22511556C0002FB19 /* Toolbar.swift in Sources */,
 				CD06866E2511556C0002FB19 /* CommentVC.swift in Sources */,
-				CD06866F2511556C0002FB19 /* SubCommentsVC.swift in Sources */,
 				CD0686782511556C0002FB19 /* ProfileVC.swift in Sources */,
 				CD0686892511556C0002FB19 /* Models.swift in Sources */,
 				CD0686A02511556C0002FB19 /* AuthorizationServer.swift in Sources */,
@@ -561,7 +554,6 @@
 				CD06868F2511556C0002FB19 /* PostListViewModel.swift in Sources */,
 				CD0686982511556C0002FB19 /* VideoCell.swift in Sources */,
 				CD0686612511556C0002FB19 /* AlbumsCell.swift in Sources */,
-				CD0686702511556C0002FB19 /* SubCommentsCell.swift in Sources */,
 				CD06867C2511556C0002FB19 /* TrackPlay.swift in Sources */,
 				CD0686832511556C0002FB19 /* AlbumTrackVC.swift in Sources */,
 				CD06869C2511556C0002FB19 /* CustomToolBar.swift in Sources */,
@@ -713,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dillondavis.Hip-Hop-Volume";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dillondavis.hiphopvolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hip-Hop Volume/Hip-Hop Volume-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -735,7 +727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dillondavis.Hip-Hop-Volume";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dillondavis.hiphopvolume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hip-Hop Volume/Hip-Hop Volume-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
