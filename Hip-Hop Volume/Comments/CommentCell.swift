@@ -10,6 +10,7 @@ protocol CommentViewDelegate: class {
     func subCommentLikePressed(sender: UIButton)
     func replyToSubComment(sender: UIButton)
     func deleteSubComment(sender:UIButton)
+    func pushToCommentUserProfile(sender:UITapGestureRecognizer, user_image: UIImageView)
     
 }
 
@@ -97,6 +98,10 @@ class CommentView: UIView {
     
     lazy var user_image: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "profile-placeholder-user")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(pushToCommentUserProfile(sender:)))
+        image.addGestureRecognizer(tap)
+        image.isUserInteractionEnabled = true
         
         return image
     }()
@@ -125,6 +130,12 @@ class CommentView: UIView {
         print("delegate \(delegate)")
         if let delegate = delegate {
             delegate.replyToSubComment(sender: sender)
+        }
+    }
+    
+    @objc func pushToCommentUserProfile(sender: UITapGestureRecognizer) {
+        if let delegate = delegate {
+            delegate.pushToCommentUserProfile(sender: sender, user_image: user_image)
         }
     }
     
@@ -228,6 +239,8 @@ protocol CommentCellDelegate {
     func alertToDeleteComment(cell: CommentCell)
     func alertToDeleteSubComment(cell: CommentCell)
     func didTapProfile(user_id:String)
+    func pushToCommentUserProfile(comment_userID:String)
+    func pushToSubCommentUserProfile(comment_userID:String)
 }
 
 protocol CommentCellDelegate2: class {
@@ -476,6 +489,7 @@ class CommentCell:UITableViewCell {
                             subCommentView.likeBtn.tag = firstIndex
                             subCommentView.numberOfLikes.tag = firstIndex
                             subCommentView.dltSubCommentBtn.tag = firstIndex
+                            subCommentView.user_image.tag = firstIndex
                         }
                         
                         self.stackView.addArrangedSubview(subCommentView)
@@ -641,21 +655,22 @@ class CommentCell:UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(user_image)
+        user_image.image = UIImage(named: "profile-placeholder-user")
+        contentView.addSubview(user_image)
         setImageConstraints()
         let tap = UITapGestureRecognizer(target: self, action: #selector(userImageTap(_:)))
         user_image.addGestureRecognizer(tap)
         user_image.isUserInteractionEnabled = true
         setUsername()
-        addSubview(username)
+        contentView.addSubview(username)
         setUsernameConstraints()
-        addSubview(textView)
-        addSubview(mainReplyBtn)
-        addSubview(dltCommentBtn)
-        addSubview(repliesBtn)
-        addSubview(viewMoreBtn)
-        addSubview(likeBtn)
-        addSubview(numberOfLikes)
+        contentView.addSubview(textView)
+        contentView.addSubview(mainReplyBtn)
+        contentView.addSubview(dltCommentBtn)
+        contentView.addSubview(repliesBtn)
+        contentView.addSubview(viewMoreBtn)
+        contentView.addSubview(likeBtn)
+        contentView.addSubview(numberOfLikes)
         configureStackView()
         textViewContstraints()
         commentLikeBtnConstraints()
@@ -674,7 +689,12 @@ class CommentCell:UITableViewCell {
     }
     
     @objc func userImageTap(_ sender: UITapGestureRecognizer) {
-       
+        if let comment_userID = comment_userID {
+            print("userImageClicked \(comment_userID)")
+            commentDelegate?.pushToCommentUserProfile(comment_userID: comment_userID)
+        } else {
+            print("userImageClicked nil \(comment_userID)")
+        }
     }
     
     
@@ -771,7 +791,7 @@ class CommentCell:UITableViewCell {
     
     
     func configureStackView() {
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 5
@@ -819,11 +839,11 @@ class CommentCell:UITableViewCell {
     func setStackViewContstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30).isActive = true
         stackView.topAnchor.constraint(equalTo: mainReplyBtn.bottomAnchor, constant: 42).isActive = true
         
         stackView.leadingAnchor.constraint(equalTo: textView.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
     }
     
@@ -831,8 +851,8 @@ class CommentCell:UITableViewCell {
     
     func setImageConstraints() {
         user_image.translatesAutoresizingMaskIntoConstraints = false
-        user_image.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
-        user_image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+        user_image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        user_image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         user_image.heightAnchor.constraint(equalToConstant: 40).isActive = true
         user_image.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
@@ -849,14 +869,14 @@ class CommentCell:UITableViewCell {
         username.topAnchor.constraint(equalTo: user_image.topAnchor, constant: 5).isActive = true
         username.leadingAnchor.constraint(equalTo: user_image.trailingAnchor, constant: 8).isActive = true
         username.heightAnchor.constraint(equalToConstant: 10).isActive = true
-        username.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        username.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
     }
     
     func textViewContstraints() {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.topAnchor.constraint(equalTo: username.bottomAnchor, constant: 5).isActive = true
         textView.leadingAnchor.constraint(equalTo: user_image.trailingAnchor, constant: 8).isActive = true
-        textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60).isActive = true
+        textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -60).isActive = true
 //        textView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 //                var frame = self.textView.frame
 //                frame.size.height = self.textView.contentSize.height
@@ -924,6 +944,10 @@ class CommentCell:UITableViewCell {
 }
 
 extension CommentCell: CommentViewDelegate {
+    func pushToCommentUserProfile(sender: UITapGestureRecognizer, user_image: UIImageView) {
+        self.commentDelegate?.pushToSubCommentUserProfile(comment_userID: (viewModel?.subComments[user_image.tag].user_id)!)
+    }
+    
    
     func deleteSubComment(sender: UIButton) {
        self.commentDelegate?.alertToDeleteSubComment(cell: self)

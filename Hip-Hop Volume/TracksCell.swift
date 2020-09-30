@@ -5,6 +5,7 @@ import GoogleMobileAds
 class TracksCell: AlbumCell {
          override init(frame: CGRect) {
            super.init(frame: frame)
+            addMainMethods()
    //        addSpinner()
 //            spinner.startAnimating()
 //            addTableView()

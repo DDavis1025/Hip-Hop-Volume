@@ -46,7 +46,7 @@ class ArtistVideoCell: ArtistAlbumsCell {
                        components.path = "/\(artistData[indexPath.row].path!)"
                          
                        cell.imageView!.image = UIImage(named: "music-placeholder")
-                       let itemSize = CGSize.init(width: 112, height: 63)
+                       let itemSize = CGSize.init(width: 100, height: 56.2)
                        UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
                        let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
                        cell.imageView?.image!.draw(in: imageRect)
@@ -60,7 +60,7 @@ class ArtistVideoCell: ArtistAlbumsCell {
                         if let url = self.components.url?.absoluteString {
                         imageLoader?.imageDidSet = { [weak self] image in
                         cell.imageView!.image = image
-                        let itemSize = CGSize.init(width: 112, height: 63)
+                            let itemSize = CGSize.init(width: 100, height: 56.2)
                         UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
                         let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
                         cell.imageView?.image!.draw(in: imageRect)

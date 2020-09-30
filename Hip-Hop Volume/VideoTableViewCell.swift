@@ -13,13 +13,13 @@ import Combine
 class VideoTableViewCell: FeedCell {
     
     override func setImageConstraints() {
-        super.setImageConstraints()
+//        super.setImageConstraints()
         mediaImage.translatesAutoresizingMaskIntoConstraints = false
         mediaImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         mediaImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         mediaImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        mediaImage.heightAnchor.constraint(equalToConstant: 60.7).isActive = true
-        mediaImage.widthAnchor.constraint(equalToConstant: 108).isActive = true
+        mediaImage.heightAnchor.constraint(equalToConstant: 62.9).isActive = true
+        mediaImage.widthAnchor.constraint(equalToConstant: 112).isActive = true
         
     }
     
@@ -28,8 +28,8 @@ class VideoTableViewCell: FeedCell {
         mediaPH.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         mediaPH.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         mediaPH.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        mediaPH.heightAnchor.constraint(equalToConstant: 60.7).isActive = true
-        mediaPH.widthAnchor.constraint(equalToConstant: 108).isActive = true
+        mediaPH.heightAnchor.constraint(equalToConstant: 62.9).isActive = true
+        mediaPH.widthAnchor.constraint(equalToConstant: 112).isActive = true
         
     }
     

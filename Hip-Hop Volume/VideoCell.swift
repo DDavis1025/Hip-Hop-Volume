@@ -13,6 +13,7 @@ struct VideoStruct {
 class VideoCell: AlbumCell {
          override init(frame: CGRect) {
            super.init(frame: frame)
+            addMainMethods()
    //        addSpinner()
 //            spinner.startAnimating()
 //            addTableView()

@@ -56,6 +56,8 @@ class VideoPlayerView: UIView {
     
     @objc func handlePause(_ sender: UIButton!) {
         print("pause clicked")
+        print("isPlaying \(isPlaying)")
+        
         if isPlaying {
             self.player?.pause()
             let button = UIButton(type: .system)
@@ -63,6 +65,7 @@ class VideoPlayerView: UIView {
             let play = UIImage(systemName: "play.fill", withConfiguration: config) as UIImage?
             let playImage = play?.withTintColor(.white, renderingMode: .alwaysOriginal)
             pausePlayButton.setImage(playImage, for: .normal)
+            isPlaying = false
         } else {
             let button = UIButton(type: .system)
             let config = UIImage.SymbolConfiguration(pointSize: 35, weight: .black, scale: .medium)
@@ -70,6 +73,7 @@ class VideoPlayerView: UIView {
             let whiteImage = image?.withTintColor(.white, renderingMode: .alwaysOriginal)
             pausePlayButton.setImage(whiteImage, for: .normal)
             self.player?.play()
+            isPlaying = true
         }
         
         secondToFadeOut = 5
@@ -77,7 +81,7 @@ class VideoPlayerView: UIView {
         runTimer()
 
         
-        isPlaying = !isPlaying
+//        isPlaying = !isPlaying
     }
     
     
@@ -400,6 +404,7 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        edgesForExtendedLayout = []
         
         interstitial = createAndLoadInterstitial()
 
@@ -502,7 +507,7 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
      bannerView.translatesAutoresizingMaskIntoConstraints = false
      view.addSubview(bannerView)
      bannerView.backgroundColor = UIColor.lightGray
-     bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+     bannerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
      bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
      bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
@@ -658,7 +663,7 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
           userAndFollow.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
           userAndFollow.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
           userAndFollow.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-          userAndFollow.view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+          userAndFollow.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.09).isActive = true
         }
          
     }

@@ -121,7 +121,7 @@ class ArtistAlbumsCell: UICollectionViewCell, UITableViewDelegate, UITableViewDa
 
         self.myTableView?.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
 
-        self.myTableView?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        self.myTableView?.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
 
             myTableView.layoutMargins = UIEdgeInsets.zero
             myTableView.separatorInset = UIEdgeInsets.zero
@@ -165,7 +165,7 @@ class ArtistAlbumsCell: UICollectionViewCell, UITableViewDelegate, UITableViewDa
                          
                        cell.imageView!.image = UIImage(named: "music-placeholder")
 
-                      let itemSize = CGSize.init(width: 100, height: 100)
+                      let itemSize = CGSize.init(width: 80, height: 80)
                       UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
                       let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
                       cell.imageView?.image!.draw(in: imageRect)
@@ -179,7 +179,7 @@ class ArtistAlbumsCell: UICollectionViewCell, UITableViewDelegate, UITableViewDa
                         imageLoader?.imageDidSet = { [weak self] image in
                         
                         cell.imageView!.image = image
-                            let itemSize = CGSize.init(width: 100, height: 100)
+                            let itemSize = CGSize.init(width: 80, height: 80)
                             UIGraphicsBeginImageContextWithOptions(itemSize, false, UIScreen.main.scale);
                             let imageRect = CGRect.init(origin: CGPoint.zero, size: itemSize)
                             cell.imageView?.image!.draw(in: imageRect)

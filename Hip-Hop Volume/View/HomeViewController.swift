@@ -23,8 +23,11 @@ import GoogleMobileAds
 class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let cellIdNoAds = "cellNoAds"
     let videoId = "videoId"
+    let videoIdNoAds = "videoIdNoAds"
     let tracksId = "tracksId"
+    let tracksIdNoAds = "tracksIdNoAds"
     var albumVC:AlbumVC?
     var userAndFollowVC:UserPfAndFollow?
     var bannerView: GADBannerView!
@@ -35,23 +38,24 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("HomeViewController")
         
-//          guard let product = product else { return }
-         
-//         if HipHopVolumeProducts.store.isProductPurchased(product.productIdentifier) {
-//            print("isPurchased true")
-//        }
-//        POSTAuth0().post(completion: {})
         view.backgroundColor = UIColor.white
         setupMenuBar()
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        if !IsPurchased.isPurchased {
+        print("!IsPurchased.isPurchased")
         addBannerViewToView(bannerView)
-        setupCollectionView()
-       self.navigationController?.isNavigationBarHidden = false
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        } else {
+            print("IsPurchased.isPurchased")
+        }
+        setupCollectionView()
+       self.navigationController?.isNavigationBarHidden = false
+        
         
 //        let logout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
                
@@ -92,6 +96,10 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
             }
           }
         }
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(IAPMasterViewController.handlePurchaseNotification(_:)),
+//                                               name: .IAPHelperPurchaseNotification,
+//                                               object: nil)
 
     }
     
@@ -197,12 +205,20 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor).isActive = true
         collectionView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: bannerView.bottomAnchor).isActive = true
+        
+        if !IsPurchased.isPurchased {
+            collectionView.topAnchor.constraint(equalTo: bannerView.bottomAnchor).isActive = true
+        } else {
+            collectionView.topAnchor.constraint(equalTo: self.menuBar.bottomAnchor).isActive = true
+        }
         
         
         collectionView.register(AlbumCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(AlbumCellNoAds.self, forCellWithReuseIdentifier: cellIdNoAds)
         collectionView.register(TracksCell.self, forCellWithReuseIdentifier: tracksId)
+        collectionView.register(TracksCellNoAds.self, forCellWithReuseIdentifier: tracksIdNoAds)
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: videoId)
+        collectionView.register(VideoCellNoAds.self, forCellWithReuseIdentifier: videoIdNoAds)
         
         
     }
@@ -246,23 +262,45 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+     
+        var albumsCell:UICollectionViewCell?
+        
         if indexPath.item == 1 {
+            if !IsPurchased.isPurchased {
             let tracksCell = collectionView.dequeueReusableCell(withReuseIdentifier: tracksId, for: indexPath) as! TracksCell
             tracksCell.parent = self
             return tracksCell
+            } else {
+                let tracksCell = collectionView.dequeueReusableCell(withReuseIdentifier: tracksIdNoAds, for: indexPath) as! TracksCellNoAds
+                tracksCell.parent = self
+                return tracksCell
+            }
         } else if indexPath.item == 2 {
+            if !IsPurchased.isPurchased {
             let videoCell = collectionView.dequeueReusableCell(withReuseIdentifier: videoId, for: indexPath) as! VideoCell
             videoCell.parent = self
             return videoCell
+           } else {
+            let videoCell = collectionView.dequeueReusableCell(withReuseIdentifier: videoIdNoAds, for: indexPath) as! VideoCellNoAds
+            videoCell.parent = self
+            return videoCell
+         }
         }
+        
+        if !IsPurchased.isPurchased {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AlbumCell
          cell.parent = self
-        
-        
-         let colors: [UIColor] = [.yellow, .orange, .red]
-         cell.backgroundColor = colors[indexPath.item]
          return cell
+        } else {
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdNoAds, for: indexPath) as! AlbumCellNoAds
+          cell.parent = self
+          return cell
+        }
+        
+        
+//         let colors: [UIColor] = [.yellow, .orange, .red]
+//         cell.backgroundColor = colors[indexPath.item]
+         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

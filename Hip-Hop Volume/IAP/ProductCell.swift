@@ -9,7 +9,12 @@
 import UIKit
 import StoreKit
 
+protocol ProductCellDelegate:class {
+    func buyAlert()
+}
+
 class ProductCell: UITableViewCell {
+  weak var delegate: ProductCellDelegate?
   static let priceFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     
@@ -37,7 +42,7 @@ class ProductCell: UITableViewCell {
      
       textLabel?.text = product.localizedTitle
      
-      if HipHopVolumeProducts.store.isProductPurchased(product.productIdentifier) {
+      if IsPurchased.isPurchased {
         accessoryType = .checkmark
         accessoryView = nil
         detailTextLabel?.text = ""
@@ -72,9 +77,15 @@ class ProductCell: UITableViewCell {
     
     return button
   }
+    
+   func buyFunction() {
+     buyButtonHandler?(product!)
+   }
+
   
   @objc func buyButtonTapped(_ sender: AnyObject) {
-    buyButtonHandler?(product!)
+    delegate?.buyAlert()
+//    buyButtonHandler?(product!)
   }
 }
 

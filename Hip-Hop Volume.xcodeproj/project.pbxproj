@@ -82,6 +82,10 @@
 		CD0686B5251157130002FB19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0686B4251157130002FB19 /* StoreKit.framework */; };
 		CD0686BB25115D110002FB19 /* AdMobTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686BA25115D110002FB19 /* AdMobTest.swift */; };
 		CD0686BD2513B9120002FB19 /* NoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0686BC2513B9120002FB19 /* NoAds.swift */; };
+		CD711D47252245BC008A3ED6 /* AlbumsCellNoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD711D46252245BB008A3ED6 /* AlbumsCellNoAds.swift */; };
+		CD711D5825224C05008A3ED6 /* VideoCellNoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD711D5725224C05008A3ED6 /* VideoCellNoAds.swift */; };
+		CD711D5B25224E3A008A3ED6 /* TracksCellNoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD711D5A25224E3A008A3ED6 /* TracksCellNoAds.swift */; };
+		CDE0A6CA252263A1008E38F3 /* TrackPlayNoAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A6C9252263A1008E38F3 /* TrackPlayNoAds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +168,10 @@
 		CD0686B8251159E60002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0686BA25115D110002FB19 /* AdMobTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobTest.swift; sourceTree = "<group>"; };
 		CD0686BC2513B9120002FB19 /* NoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAds.swift; sourceTree = "<group>"; };
+		CD711D46252245BB008A3ED6 /* AlbumsCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCellNoAds.swift; sourceTree = "<group>"; };
+		CD711D5725224C05008A3ED6 /* VideoCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellNoAds.swift; sourceTree = "<group>"; };
+		CD711D5A25224E3A008A3ED6 /* TracksCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksCellNoAds.swift; sourceTree = "<group>"; };
+		CDE0A6C9252263A1008E38F3 /* TrackPlayNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPlayNoAds.swift; sourceTree = "<group>"; };
 		CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hip_Hop_Volume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -210,6 +218,7 @@
 		CD0685EA2511528C0002FB19 /* Hip-Hop Volume */ = {
 			isa = PBXGroup;
 			children = (
+				CD711D5625224BBA008A3ED6 /* NoAdsVCs */,
 				CD06860A251155690002FB19 /* AdMob */,
 				CD068601251155680002FB19 /* AlbumsCell.swift */,
 				CD0686402511556B0002FB19 /* AppDelegate.swift */,
@@ -377,6 +386,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		CD711D5625224BBA008A3ED6 /* NoAdsVCs */ = {
+			isa = PBXGroup;
+			children = (
+				CD711D46252245BB008A3ED6 /* AlbumsCellNoAds.swift */,
+				CD711D5725224C05008A3ED6 /* VideoCellNoAds.swift */,
+				CD711D5A25224E3A008A3ED6 /* TracksCellNoAds.swift */,
+				CDE0A6C9252263A1008E38F3 /* TrackPlayNoAds.swift */,
+			);
+			path = NoAdsVCs;
+			sourceTree = "<group>";
+		};
 		F1432FE998285FC8A9ABAF45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +528,7 @@
 				CD0686762511556C0002FB19 /* VideoPlayerView.swift in Sources */,
 				CD0686A82511556C0002FB19 /* PostRequests.swift in Sources */,
 				CD0686BD2513B9120002FB19 /* NoAds.swift in Sources */,
+				CD711D5B25224E3A008A3ED6 /* TracksCellNoAds.swift in Sources */,
 				CD0686632511556C0002FB19 /* IAPHelper.swift in Sources */,
 				CD0686812511556C0002FB19 /* MainView.swift in Sources */,
 				CD0686802511556C0002FB19 /* ImageView.swift in Sources */,
@@ -520,6 +541,7 @@
 				CD0686642511556C0002FB19 /* IAPMasterViewController.swift in Sources */,
 				CD0686A72511556C0002FB19 /* ImageCache.swift in Sources */,
 				CD06867E2511556C0002FB19 /* ArtistProfileVC.swift in Sources */,
+				CDE0A6CA252263A1008E38F3 /* TrackPlayNoAds.swift in Sources */,
 				CD06868A2511556C0002FB19 /* ArtistPFContainerView.swift in Sources */,
 				CD0686A92511556C0002FB19 /* ImageToServer.swift in Sources */,
 				CD0686742511556C0002FB19 /* UserPfAndFollow.swift in Sources */,
@@ -550,6 +572,7 @@
 				CD0686A22511556C0002FB19 /* NotificationCell.swift in Sources */,
 				CD06867D2511556C0002FB19 /* HomeViewController.swift in Sources */,
 				CD0686A42511556C0002FB19 /* NotificationViewModel.swift in Sources */,
+				CD711D47252245BC008A3ED6 /* AlbumsCellNoAds.swift in Sources */,
 				CD0686A52511556C0002FB19 /* NotificationAlbumsTrack.swift in Sources */,
 				CD06868F2511556C0002FB19 /* PostListViewModel.swift in Sources */,
 				CD0686982511556C0002FB19 /* VideoCell.swift in Sources */,
@@ -558,6 +581,7 @@
 				CD0686832511556C0002FB19 /* AlbumTrackVC.swift in Sources */,
 				CD06869C2511556C0002FB19 /* CustomToolBar.swift in Sources */,
 				CD0686732511556C0002FB19 /* CommentCell.swift in Sources */,
+				CD711D5825224C05008A3ED6 /* VideoCellNoAds.swift in Sources */,
 				CD06868C2511556C0002FB19 /* ArtistAlbumsCell.swift in Sources */,
 				CD06869B2511556C0002FB19 /* VideoTableViewCell.swift in Sources */,
 				CD0686912511556C0002FB19 /* ViewModels.swift in Sources */,
@@ -701,6 +725,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3293SR39E;
 				INFOPLIST_FILE = "Hip-Hop Volume/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -723,6 +748,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3293SR39E;
 				INFOPLIST_FILE = "Hip-Hop Volume/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

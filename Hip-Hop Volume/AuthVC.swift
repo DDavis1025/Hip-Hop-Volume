@@ -46,30 +46,35 @@ class AuthVC: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        HipHopVolumeProducts.store.requestProducts {_,_ in 
-        }
         
-        receiptValidator()
+//        receiptValidator()
+        
+//        getReceipt()
         
         
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+
     
-    func receiptValidator() {
-        let url = URL(string: "https://hiphipvolume.com/verify")!
-        let publicKey = "MIIBCgKCAQEAxyMBp5Ky5qpJOTZsOBjMjNdMJqQA95kMKWGCrfiHnF1Zzp3tHGs2Ulpz8sykVW9QtzgmQh2mSEEKPN6rN+E+YJ8NbGaUqeOchZmTvuzy6j9PMuDVgtBN4z0hO/nK6oVOkqB0Kun2jlhMcTFT+3c3OmI9cmDXcfvnK/zr1fn+sHlJFBCGVxClIMB3FSLvrlmfzSRiVySDHMjyT5SuZ3bpXPgX4owaAQojDuOKYf8G678H8kNv8Nuh4WkVr0FWv7X1mdyBIHedJbEPIwkmiyAisEh9IZAsM9MU1/yGmBmChJlK85qZvDgemLM43fbVX7T77iNw7O60eibgudZMxPxcqQIDAQAB"
-        verifier = IAPReceiptVerifier(url: url, base64EncodedPublicKey: publicKey)
-        
-        if let verifier = verifier {
-            verifier.verify(completion: { myReceipt in
-                guard let receipt = myReceipt else {
-                    return
-                }
-                print("receipt \(receipt)")
-            })
-        }
-    }
+//    func receiptValidator() {
+//        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+//            FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
+//
+//            do {
+//                let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+//                print("receiptData \(receiptData)")
+//
+//                let receiptString = receiptData.base64EncodedString(options: [])
+//
+//                ReceiptValidator(receiptData: receiptString).sendReceipt(completion: {
+//
+//                })
+//                // Read receiptData
+//            }
+//            catch { print("Couldn't read receipt data with error: " + error.localizedDescription) }
+//        }
+//}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -30,15 +30,18 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.isUserInteractionEnabled = true
         view.backgroundColor = UIColor.white
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.setToolbarHidden(false, animated: false)
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        if !IsPurchased.isPurchased {
         addBannerViewToView(bannerView)
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        }
         
         addTableView()
         loadNotifications(completion: {})
@@ -108,8 +111,11 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
         myTableView.delaysContentTouches = false
         self.view.addSubview(self.myTableView)
 
-
+        if !IsPurchased.isPurchased {
         self.myTableView?.topAnchor.constraint(equalTo: bannerView.bottomAnchor).isActive = true
+        } else {
+            self.myTableView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        }
 
         self.myTableView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
 
@@ -138,6 +144,7 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         cell.index = indexPath.row
+        cell.user_image.isUserInteractionEnabled = true
 //        let notification = self.notifications[indexPath.row]
 //        cell.setNotification(notification: notification)
         let item = self.notifications[indexPath.item]

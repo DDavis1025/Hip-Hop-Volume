@@ -8,7 +8,7 @@ target 'Hip-Hop Volume' do
   # Pods for Hip-Hop Volume
 
   pod 'Auth0', '~> 1.19'
-  pod 'Lock', '~> 2.0'
+  pod 'Lock', '~> 2.19'
   pod 'Google-Mobile-Ads-SDK'
   pod 'IAPReceiptVerifier'
 

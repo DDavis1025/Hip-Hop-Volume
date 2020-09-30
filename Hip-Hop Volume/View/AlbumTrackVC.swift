@@ -120,12 +120,14 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
             view.addSubview(imageView.view)
         }
         
+        if !IsPurchased.isPurchased {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        }
         
         
         setupConstraints()
@@ -437,14 +439,15 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     }
     
     @objc func goBackBtnClicked(_: UIButton) {
-            if NumberOfNext.numberOfNext <= 12 {
+        if !IsPurchased.isPurchased {
+            if NumberOfNext.numberOfNext <= 10 {
                 var number = NumberOfNext.numberOfNext
                 number += 1
                 self.goBackFunctions()
                 numberOfNext.updateNumberOfNext(newInt: number)
                 print("numberOfNext <= 1 \(NumberOfNext.numberOfNext)")
 //                play(url: components.url! as NSURL)
-            } else if NumberOfNext.numberOfNext == 13 {
+            } else if NumberOfNext.numberOfNext == 11 {
                 view.isUserInteractionEnabled = false
                 print("numberOfNext == 2 \(NumberOfNext.numberOfNext)")
                 player?.pause()
@@ -453,7 +456,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
 //                self.play(url: self.components.url! as NSURL)
                 self.numberOfNext.updateNumberOfNext(newInt: 0)
             }
-               if NumberOfNext.numberOfNext == 12  {
+               if NumberOfNext.numberOfNext == 10  {
                 let intersticialAdVM = IntersticialAdVM()
                 intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
                 //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
@@ -462,17 +465,21 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                 //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
                 TrackPlayVC.shared.interstitial?.load(GADRequest())
             }
+        } else {
+            goBackFunctions()
+        }
     }
     
     @objc func goForwardBtnClicked(_: UIButton) {
-            if NumberOfNext.numberOfNext <= 12 {
+        if !IsPurchased.isPurchased {
+            if NumberOfNext.numberOfNext <= 10 {
                 goForwardFunctions()
                 var number = NumberOfNext.numberOfNext
                 number += 1
                 print("numberOfNext <= 1 \(NumberOfNext.numberOfNext)")
                 numberOfNext.updateNumberOfNext(newInt: number)
 //                play(url: components.url! as NSURL)
-            } else if NumberOfNext.numberOfNext == 13 {
+            } else if NumberOfNext.numberOfNext == 11 {
 //                self.play(url: self.components.url! as NSURL)
                 view.isUserInteractionEnabled = false
                 player?.pause()
@@ -482,7 +489,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
 //                    self.goForwardFunctions()
                 self.numberOfNext.updateNumberOfNext(newInt: 0)
             }
-               if NumberOfNext.numberOfNext == 12  {
+               if NumberOfNext.numberOfNext == 10  {
                 let intersticialAdVM = IntersticialAdVM()
                 intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
                 //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
@@ -491,6 +498,9 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                 //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
                 TrackPlayVC.shared.interstitial?.load(GADRequest())
             }
+        } else {
+            goForwardFunctions()
+        }
             
     }
     
@@ -714,7 +724,11 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         
         albumTracksBtn?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
+        if !IsPurchased.isPurchased {
         albumTracksBtn?.bottomAnchor.constraint(equalTo: bannerView.topAnchor, constant: -15).isActive = true
+        } else {
+            albumTracksBtn?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
+        }
         
         
     }

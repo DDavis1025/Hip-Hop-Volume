@@ -262,7 +262,7 @@ class UserPfAndFollow: UIViewController, FollowDelegateProtocol {
         
         followButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         
-        followButton.centerYAnchor.constraint(equalTo: user!.centerYAnchor).isActive = true
+        followButton.centerYAnchor.constraint(equalTo: userImageView!.centerYAnchor).isActive = true
     }
 
     

@@ -609,6 +609,22 @@ class CommentVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 
 extension CommentVC: CommentCellDelegate {
     
+    func pushToSubCommentUserProfile(comment_userID: String) {
+        let artistPFVC = ArtistProfileVC()
+           let artistStruct = ArtistStruct()
+           artistPFVC.artistID = comment_userID
+           artistStruct.updateArtistID(newString: comment_userID)
+           navigationController?.pushViewController(artistPFVC, animated: true)
+    }
+    
+    func pushToCommentUserProfile(comment_userID: String) {
+        let artistPFVC = ArtistProfileVC()
+           let artistStruct = ArtistStruct()
+           artistPFVC.artistID = comment_userID
+           artistStruct.updateArtistID(newString: comment_userID)
+           navigationController?.pushViewController(artistPFVC, animated: true)
+    }
+    
     func didTapProfile(user_id: String) {
         
     }

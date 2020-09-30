@@ -107,10 +107,12 @@ class FeedCell:UITableViewCell {
         mediaImage.translatesAutoresizingMaskIntoConstraints = false
         mediaImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         mediaImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        mediaImage.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        mediaImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
+//        mediaImage.heightAnchor.constraint(equalToConstant: 90).isActive = true
+//        mediaImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
 //        mediaImage.topAnchor.constraint(equalTo: topAnchor, constant: -10).isActive = true
         mediaImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        mediaImage.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        mediaImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         
     }
@@ -119,9 +121,9 @@ class FeedCell:UITableViewCell {
         mediaPH.translatesAutoresizingMaskIntoConstraints = false
         mediaPH.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         mediaPH.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        mediaPH.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         mediaPH.heightAnchor.constraint(equalToConstant: 90).isActive = true
         mediaPH.widthAnchor.constraint(equalToConstant: 90).isActive = true
+        mediaPH.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
 //        mediaPH.topAnchor.constraint(equalTo: topAnchor, constant: -10).isActive = true
         
     }

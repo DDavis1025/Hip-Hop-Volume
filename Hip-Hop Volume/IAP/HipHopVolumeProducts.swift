@@ -15,6 +15,7 @@ public struct HipHopVolumeProducts {
   private static let productIdentifiers: Set<ProductIdentifier> = [HipHopVolumeProducts.NoAds]
 
   public static let store = IAPHelper(productIds: HipHopVolumeProducts.productIdentifiers)
+    
 }
 
 func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {

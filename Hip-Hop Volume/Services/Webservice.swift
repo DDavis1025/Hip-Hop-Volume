@@ -1644,3 +1644,57 @@ class GETUserName: Identifiable {
     }
 }
 
+
+
+class GETPurchase: Identifiable {
+    
+    var user_id:String = ""
+    var productIdentifier:String = ""
+    init(user_id:String?, productIdentifier:String?) {
+        if let user_id = user_id, let productIdentifier = productIdentifier {
+            self.user_id = user_id
+            self.productIdentifier = productIdentifier
+        }
+    }
+    
+        
+    func getPurchase(completion: @escaping ([Purchase]) -> ()) {
+        
+        var components = URLComponents()
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
+                  components.path = "/purchase/\(user_id)/\(productIdentifier)"
+//                  components.queryItems = queryItems
+        
+        
+                  
+                 let url = components.url
+        
+                print("url \(url)")
+                
+                guard let requestUrl = url else { fatalError() }
+                var request = URLRequest(url: requestUrl)
+                request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+             if let error = error {
+                print("Error \(error)")
+             }
+            
+             guard let data = data else {
+                return
+             }
+             guard let responseData = try? JSONDecoder().decode([Purchase].self, from: data) else {
+               print("Unable to decode data")
+               return
+              }
+
+                DispatchQueue.main.async {
+                    completion(responseData)
+                }
+            
+        }.resume()
+    }
+}

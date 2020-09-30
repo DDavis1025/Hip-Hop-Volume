@@ -170,10 +170,13 @@ class NotificationCell: UITableViewCell {
     
     lazy var user_image: UIImageView = {
         let image = UIImageView()
-        image.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer()
-        gesture.addTarget(self, action: #selector(userImageClicked))
+        gesture.addTarget(self, action: #selector(userImageClicked(_:)))
+        gesture.numberOfTapsRequired = 1
+        gesture.numberOfTouchesRequired = 1
+        gesture.cancelsTouchesInView = false
         image.addGestureRecognizer(gesture)
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -190,6 +193,8 @@ class NotificationCell: UITableViewCell {
         let image = UIImageView()
         image.isUserInteractionEnabled = true
         post_gesture.addTarget(self, action: #selector(postImageClicked))
+        post_gesture.numberOfTapsRequired = 1
+        post_gesture.numberOfTouchesRequired = 1
         image.addGestureRecognizer(post_gesture)
 
         return image
@@ -233,12 +238,13 @@ class NotificationCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(username)
-        addSubview(user_image)
-        addSubview(messageTextView)
-        addSubview(post_image)
-        addSubview(commentTextView)
-        addSubview(followBtn)
+        self.isUserInteractionEnabled = true
+        contentView.addSubview(username)
+        contentView.addSubview(user_image)
+        contentView.addSubview(messageTextView)
+        contentView.addSubview(post_image)
+        contentView.addSubview(commentTextView)
+        contentView.addSubview(followBtn)
         user_imageContraints()
         usernameContraints()
         messageConstraints()
@@ -257,8 +263,8 @@ class NotificationCell: UITableViewCell {
     func user_imageContraints() {
         user_image.translatesAutoresizingMaskIntoConstraints = false
 //        user_image.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        user_image.topAnchor.constraint(equalTo:topAnchor, constant: 8).isActive = true
-        user_image.leadingAnchor.constraint(equalTo:leadingAnchor, constant: 8).isActive = true
+        user_image.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 8).isActive = true
+        user_image.leadingAnchor.constraint(equalTo:contentView.leadingAnchor, constant: 8).isActive = true
         user_image.heightAnchor.constraint(equalToConstant: 40).isActive = true
         user_image.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
@@ -290,7 +296,7 @@ class NotificationCell: UITableViewCell {
         
         commentTextView.translatesAutoresizingMaskIntoConstraints = false
         commentTextView.topAnchor.constraint(equalTo: messageTextView.bottomAnchor).isActive = true
-        commentTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+        commentTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         commentTextView.leadingAnchor.constraint(equalTo:  messageTextView.leadingAnchor, constant: 2.5).isActive = true
         commentTextView.trailingAnchor.constraint(equalTo: messageTextView.trailingAnchor).isActive = true
         
@@ -302,7 +308,7 @@ class NotificationCell: UITableViewCell {
     func postImageConstraints() {
         post_image.translatesAutoresizingMaskIntoConstraints = false
         post_image.topAnchor.constraint(equalTo: user_image.topAnchor).isActive = true
-        post_image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+        post_image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
         post_image.heightAnchor.constraint(equalToConstant: 50).isActive = true
         post_image.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -310,7 +316,7 @@ class NotificationCell: UITableViewCell {
     func followBtnConstraints() {
         followBtn.translatesAutoresizingMaskIntoConstraints = false
         followBtn.topAnchor.constraint(equalTo: user_image.topAnchor).isActive = true
-        followBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
+        followBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
         followBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         followBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -322,9 +328,13 @@ class NotificationCell: UITableViewCell {
     
     
   
-    @objc func userImageClicked() {
+    @objc func userImageClicked(_ sender: UITapGestureRecognizer) {
+        print("userImageClicked")
         if let supporter_id = viewModel?.mainNotification?.supporter_id {
+            print("userImageClicked \(supporter_id)")
             delegate?.pushToSupporterProfile(supporter_id: supporter_id)
+        } else {
+            print("userImageClicked nil \(viewModel?.mainNotification?.supporter_id)")
         }
     }
 

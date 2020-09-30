@@ -18,7 +18,7 @@ struct FollowerPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -56,7 +56,7 @@ struct CommentPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -98,7 +98,7 @@ struct CommentLikePostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -139,7 +139,7 @@ struct SubCommentLikePostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -182,7 +182,7 @@ struct CommentsPostRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -225,7 +225,7 @@ struct LikeRequest {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL
@@ -339,4 +339,97 @@ struct POSTAuth0 {
        }
     }
 }
+
+
+final class Receipt: Codable {
+    var receipt:String?
+    
+    init(receipt:String) {
+        self.receipt = receipt
+    }
+}
+
+struct ReceiptValidation {
+    let resourceURL:URL
+    
+    init(endpoint:String) {
+        let resourceString = "http://192.168.1.150:8000/\(endpoint)"
+        guard let resourceURL = URL(string: resourceString) else {fatalError()}
+        
+        self.resourceURL = resourceURL
+    }
+    
+    func postNow(_ receipt: Receipt, completion: @escaping(Result<[Receipt], APIError>) -> Void) {
+        
+        do {
+            var urlRequest = URLRequest(url: resourceURL)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try JSONEncoder().encode(receipt)
+            
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
+                
+                
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
+                    completion(.failure(.responseProblem))
+                    return
+                }
+                
+                do {
+                    let likeData = try JSONDecoder().decode([Receipt].self, from: jsonData)
+                    completion(.success(likeData))
+                } catch {
+                    completion(.failure(.decodingProblem))
+                }
+            }
+            dataTask.resume()
+        } catch {
+            completion(.failure(.encodingProblem))
+        }
+    }
+}
+
+
+
+struct AddPurchase {
+    let resourceURL:URL
+    
+    init(endpoint:String) {
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
+        guard let resourceURL = URL(string: resourceString) else {fatalError()}
+        
+        self.resourceURL = resourceURL
+    }
+    
+    func save(_ purchase: Purchase, completion: @escaping(Result<[Purchase], APIError>) -> Void) {
+        
+        do {
+            var urlRequest = URLRequest(url: resourceURL)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try JSONEncoder().encode(purchase)
+            
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
+                
+                
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
+                    completion(.failure(.responseProblem))
+                    return
+                }
+                
+                do {
+                    let purchase = try JSONDecoder().decode([Purchase].self, from: jsonData)
+                    completion(.success(purchase))
+                } catch {
+                    completion(.failure(.decodingProblem))
+                }
+            }
+            dataTask.resume()
+        } catch {
+            completion(.failure(.encodingProblem))
+        }
+    }
+}
+
+
 

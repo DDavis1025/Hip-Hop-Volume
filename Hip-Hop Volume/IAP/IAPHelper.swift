@@ -16,25 +16,29 @@ extension Notification.Name {
 }
 
 open class IAPHelper: NSObject  {
-    private let productIdentifiers: Set<ProductIdentifier>
+    private var productIdentifiers: Set<ProductIdentifier>
     private var purchasedProductIdentifiers: Set<ProductIdentifier> = []
     private var productsRequest: SKProductsRequest?
     private var productsRequestCompletionHandler: ProductsRequestCompletionHandler?
     
     public init(productIds: Set<ProductIdentifier>) {
       productIdentifiers = productIds
-      for productIdentifier in productIds {
-        let purchased = UserDefaults.standard.bool(forKey: productIdentifier)
-        if purchased {
-          purchasedProductIdentifiers.insert(productIdentifier)
-          print("Previously purchased: \(productIdentifier)")
-        } else {
-          print("Not purchased: \(productIdentifier)")
-        }
-      }
       super.init()
+//        for productIdentifier in productIdentifiers {
+//          if let user_id = profile?.sub {
+//              GETPurchase(user_id: user_id, productIdentifier: productIdentifier).getPurchase(completion: {
+//                  if $0.count > 0 {
+//                  self.purchasedProductIdentifiers.insert(productIdentifier)
+//                  print("Previously purchased: \(productIdentifier)")
+//                  } else {
+//                  print("Not purchased: \(productIdentifier)")
+//                  }
+//                 })
+//           }
+//       }
       SKPaymentQueue.default().add(self)
     }
+    
 }
 
 // MARK: - StoreKit API
@@ -44,7 +48,6 @@ extension IAPHelper {
   public func requestProducts(completionHandler: @escaping ProductsRequestCompletionHandler) {
     productsRequest?.cancel()
     productsRequestCompletionHandler = completionHandler
-
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
     productsRequest!.delegate = self
     productsRequest!.start()
@@ -56,9 +59,13 @@ extension IAPHelper {
     SKPaymentQueue.default().add(payment)
   }
 
-  public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
-    return purchasedProductIdentifiers.contains(productIdentifier)
-  }
+//  public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
+//    return purchasedProductIdentifiers.contains(productIdentifier)
+//  }
+    
+//    public func isProductPurchased(_ productIdentifier: ProductIdentifier) -> Bool {
+//        return IsPurchased.isPurchased
+//      }
   
   public class func canMakePayments() -> Bool {
     return SKPaymentQueue.canMakePayments()
@@ -66,6 +73,20 @@ extension IAPHelper {
   
   public func restorePurchases() {
     SKPaymentQueue.default().restoreCompletedTransactions()
+  }
+    
+  func addPurchaseUser(user_id: String, productIdentifier:String) {
+    let purchase = Purchase(user_id: user_id, productIdentifier: productIdentifier)
+    
+    AddPurchase(endpoint: "purchase").save(purchase, completion: {
+        (result) in
+            switch result {
+            case .success(let receipt):
+                print("Success saving user purchase")
+            case .failure(let error):
+                print("An error occurred \(error)")
+            }
+    })
   }
 }
 
@@ -79,7 +100,7 @@ extension IAPHelper: SKProductsRequestDelegate {
     clearRequestAndHandler()
 
     for p in products {
-      print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
+        print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
     }
   }
   
@@ -145,10 +166,20 @@ extension IAPHelper: SKPaymentTransactionObserver {
   }
  
   private func deliverPurchaseNotificationFor(identifier: String?) {
+    print("indentifier \(identifier)")
     guard let identifier = identifier else { return }
- 
-    purchasedProductIdentifiers.insert(identifier)
-    UserDefaults.standard.set(true, forKey: identifier)
+    print("got indentifier \(identifier)")
+//    purchasedProductIdentifiers.insert(identifier)
+    let profile = SessionManager.shared.profile
+    if let user_id = profile?.sub {
+    print("user found \(user_id)")
+    addPurchaseUser(user_id: user_id, productIdentifier: identifier)
+    } else {
+        print("user not found")
+    }
+    let purchase = IsPurchased()
+    purchase.updateIsPurchased(newBool: true)
+//    UserDefaults.standard.set(true, forKey: identifier)
     NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)
   }
 }

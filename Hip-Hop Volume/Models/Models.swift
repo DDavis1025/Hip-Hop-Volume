@@ -363,6 +363,24 @@ struct ManagementAccessToken: Decodable {
     var access_token:String
 }
 
+final class Purchase: Codable {
+    var user_id:String?
+    var productIdentifier:String?
+    
+    init(user_id:String, productIdentifier:String) {
+        self.user_id = user_id
+        self.productIdentifier = productIdentifier
+    }
+}
+
+
+struct IsPurchased {
+    static var isPurchased:Bool = false
+    
+    func updateIsPurchased(newBool:Bool) {
+        IsPurchased.self.isPurchased = newBool
+    }
+}
 
 
 

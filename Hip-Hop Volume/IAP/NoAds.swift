@@ -15,18 +15,23 @@ class NoAdsVC: UIViewController {
         let label = UILabel()
         label.text = "No Ads"
         label.textColor = UIColor.black
+        label.numberOfLines = 3
+        label.lineBreakMode = .byTruncatingTail
         label.textAlignment = .center
         label.sizeToFit()
-        label.font = UIFont.systemFont(ofSize: 90)
+        label.font = UIFont.systemFont(ofSize: 80)
         return label
     }()
     
     lazy var adFreeLabel:UILabel = {
         let label = UILabel()
-        label.text = "\u{2022} Ad-free listening"
+        label.text = "\u{2022} Ad-free content and listening"
         label.textColor = UIColor.black
+        label.numberOfLines = 3
+        label.lineBreakMode = .byTruncatingTail
+        label.textAlignment = .center
         label.sizeToFit()
-        label.font = UIFont.systemFont(ofSize: 25)
+        label.font = UIFont.systemFont(ofSize: 22)
         return label
     }()
     
@@ -59,14 +64,15 @@ class NoAdsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = false
         view.backgroundColor = UIColor.white
         view.addSubview(noAds)
         view.addSubview(adFreeLabel)
-        view.addSubview(loadFeedLabel)
+//        view.addSubview(loadFeedLabel)
         view.addSubview(purchaseBtn)
         noAdsConstraints()
         adFreeLabelConstraints()
-        loadFeedLabelConstraints()
+//        loadFeedLabelConstraints()
         purchaseBtnConstraints()
         
     }
@@ -80,11 +86,14 @@ class NoAdsVC: UIViewController {
            noAds.translatesAutoresizingMaskIntoConstraints = false
            noAds.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
            noAds.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25).isActive = true
+           noAds.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
+           noAds.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
        }
     
     func adFreeLabelConstraints() {
            adFreeLabel.translatesAutoresizingMaskIntoConstraints = false
            adFreeLabel.leadingAnchor.constraint(equalTo: noAds.leadingAnchor).isActive = true
+           adFreeLabel.trailingAnchor.constraint(equalTo: noAds.trailingAnchor).isActive = true
            adFreeLabel.topAnchor.constraint(equalTo: noAds.bottomAnchor, constant: 25).isActive = true
            
        }
@@ -101,7 +110,7 @@ class NoAdsVC: UIViewController {
         purchaseBtn.heightAnchor.constraint(equalToConstant: 70).isActive = true
         purchaseBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         purchaseBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        purchaseBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5).isActive = true
+        purchaseBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
         
     }
     

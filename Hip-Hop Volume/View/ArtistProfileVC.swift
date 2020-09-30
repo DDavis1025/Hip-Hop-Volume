@@ -268,8 +268,8 @@ class ArtistProfileVC: Toolbar {
         self.imageView?.translatesAutoresizingMaskIntoConstraints = false
         self.imageView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         self.imageView?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.imageView?.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        self.imageView?.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.19).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
 }
     
     func userInfo() {
