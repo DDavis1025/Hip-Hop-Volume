@@ -177,7 +177,7 @@ extension IAPHelper: SKPaymentTransactionObserver {
     } else {
         print("user not found")
     }
-    let purchase = IsPurchased()
+    let purchase = IsPremiumPurchased()
     purchase.updateIsPurchased(newBool: true)
 //    UserDefaults.standard.set(true, forKey: identifier)
     NotificationCenter.default.post(name: .IAPHelperPurchaseNotification, object: identifier)

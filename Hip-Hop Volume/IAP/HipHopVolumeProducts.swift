@@ -10,9 +10,9 @@ import Foundation
 
 public struct HipHopVolumeProducts {
   
-  public static let NoAds = "com.dillondavis.hiphopvolume.noads"
+  public static let Premium = "com.dillondavis.hiphopvolume.premium"
   
-  private static let productIdentifiers: Set<ProductIdentifier> = [HipHopVolumeProducts.NoAds]
+  private static let productIdentifiers: Set<ProductIdentifier> = [HipHopVolumeProducts.Premium]
 
   public static let store = IAPHelper(productIds: HipHopVolumeProducts.productIdentifiers)
     

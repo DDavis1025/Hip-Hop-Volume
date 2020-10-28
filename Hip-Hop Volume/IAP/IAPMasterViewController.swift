@@ -60,7 +60,7 @@ class IAPMasterViewController: UITableViewController {
                                         target: self,
                                         action: #selector(IAPMasterViewController.restoreTapped(_:)))
     
-    if !IsPurchased.isPurchased {
+    if !IsPremiumPurchased.isPurchased {
     navigationItem.rightBarButtonItem = restoreButton
     }
     
@@ -113,7 +113,7 @@ class IAPMasterViewController: UITableViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-//    receiptValidator()
+    receiptValidator()
     reload()
     var profile = SessionManager.shared.profile
     print("profile sub iapmaster \(profile!.sub)")
@@ -167,7 +167,7 @@ class IAPMasterViewController: UITableViewController {
     }
   
   @objc func restoreTapped(_ sender: AnyObject) {
-    let alert = UIAlertController(title: "Alert", message: "You can only restore purchases if you have a purchase with this apple id, if so you will be logged out", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Alert", message: "You can only restore purchases if you have purchased this item with this apple id, if so you will be logged out", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
         HipHopVolumeProducts.store.restorePurchases()
     }))

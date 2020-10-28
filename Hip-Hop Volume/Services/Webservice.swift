@@ -1661,12 +1661,12 @@ class GETPurchase: Identifiable {
     func getPurchase(completion: @escaping ([Purchase]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "https"
-                  components.host = "hiphopvolume.com"
+                  components.scheme = "http"
+                  components.host = "192.168.1.150"
+                  components.port = 8000
                   components.path = "/purchase/\(user_id)/\(productIdentifier)"
-//                  components.queryItems = queryItems
         
-        
+
                   
                  let url = components.url
         
@@ -1698,3 +1698,111 @@ class GETPurchase: Identifiable {
         }.resume()
     }
 }
+
+
+
+class GETPremium: Identifiable {
+    
+    var user_id:String = ""
+    init(user_id:String?) {
+        if let user_id = user_id {
+            self.user_id = user_id
+        }
+    }
+    
+        
+    func getPremium(completion: @escaping ([Premium]) -> ()) {
+        
+        var components = URLComponents()
+                  components.scheme = "http"
+                  components.host = "192.168.1.150"
+                  components.port = 8000
+                  components.path = "/get-premium-user/\(user_id)"
+        
+
+                  
+                 let url = components.url
+        
+                print("url \(url)")
+                
+                guard let requestUrl = url else { fatalError() }
+                var request = URLRequest(url: requestUrl)
+                request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+             if let error = error {
+                print("Error \(error)")
+             }
+            
+             guard let data = data else {
+                return
+             }
+             guard let responseData = try? JSONDecoder().decode([Premium].self, from: data) else {
+               print("Unable to decode data")
+                completion([])
+               return
+              }
+
+                DispatchQueue.main.async {
+                    completion(responseData)
+                }
+            
+        }.resume()
+    }
+}
+
+
+class GETDataUsage: Identifiable {
+    
+    var user_id:String = ""
+    init(user_id:String?) {
+        if let user_id = user_id {
+            self.user_id = user_id
+        }
+    }
+    
+        
+    func getDataUsage(completion: @escaping ([DataUsage]) -> ()) {
+        
+        var components = URLComponents()
+                  components.scheme = "http"
+                  components.host = "192.168.1.150"
+                  components.port = 8000
+                  components.path = "/dataUsage/\(user_id)"
+        
+
+                  
+                 let url = components.url
+        
+                print("url \(url)")
+                
+                guard let requestUrl = url else { fatalError() }
+                var request = URLRequest(url: requestUrl)
+                request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+             if let error = error {
+                print("Error \(error)")
+             }
+            
+             guard let data = data else {
+                return
+             }
+             guard let responseData = try? JSONDecoder().decode(DataUsage.self, from: data) else {
+               print("Unable to decode data")
+                completion([])
+               return
+              }
+
+                DispatchQueue.main.async {
+                    completion([responseData])
+                }
+            
+        }.resume()
+    }
+}
+

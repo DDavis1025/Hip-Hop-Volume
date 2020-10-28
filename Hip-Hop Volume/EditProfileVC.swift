@@ -98,6 +98,8 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     var imagePH = UIImageView()
     var userInfoArr:[(title: String, value: String)] = []
     var myTableView:UITableView?
+    var isPurchased:Bool?
+    var dataUsage:[DataUsage]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +115,19 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
+          checkForPremium(completion: {
+            self.getDataUsage()
+          })
 //        photoDidUpdate()
+    }
+    
+    func getDataUsage() {
+        if let user_id = user_profile?.sub {
+        GETDataUsage(user_id: user_id).getDataUsage(completion: {
+            self.dataUsage = $0
+            print("\(self.dataUsage) \(self.isPurchased)")
+         })
+      }
     }
     
     
@@ -134,6 +148,30 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
                 self.addTableView()
                 }
             }
+        }
+    }
+    
+    func checkForPremium(completion: @escaping(()->())) {
+        print("checkForPurchase")
+        if let user_id = user_profile?.sub {
+        GETPremium(user_id: user_id).getPremium(completion: {
+            print("\($0) premium user")
+            if let status = $0[0].status {
+            if status == "active" {
+                self.isPurchased = true
+                print("checkForPurchase isPurchased")
+                let purchase = IsPremiumPurchased()
+                purchase.updateIsPurchased(newBool: true)
+                completion()
+            } else {
+                print("not purchased")
+                completion()
+                self.isPurchased = false
+                let purchase = IsPremiumPurchased()
+                purchase.updateIsPurchased(newBool: false)
+            }
+           }
+          })
         }
     }
     
@@ -241,11 +279,56 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     
     @objc func doneTapped(sender: UIBarButtonItem) {
         if pictureAdded {
-        userPhotoUpload()
+            if let isPurchased = isPurchased, let overFree = dataUsage?[0].overFree, let overPremium = dataUsage?[0].overPremium  {
+                if (isPurchased && !overFree) {
+                    //show alert
+                    showUpdateToPremium()
+                } else if (isPurchased && !overPremium) {
+                    //show alert
+                    showOutOfPremiumData()
+                } else {
+                    userPhotoUpload()
+                }
+         }
         }
         
         self.navigationController?.popViewController(animated: true)
         
+    }
+    
+    func showUpdateToPremium() {
+        let alert = UIAlertController(title: "Alert", message: "You are out of upload data", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Upgrade To Premium", style: .default, handler: { (action: UIAlertAction!) in
+              let premiumVC = UpgradeToPremium()
+              self.navigationController?.pushViewController(premiumVC, animated: true)
+              print("OK. updgrade to premium")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("cancel clicked")
+        }))
+
+        present(alert, animated: true, completion: nil)
+
+    }
+    
+    func showOutOfPremiumData() {
+        let alert = UIAlertController(title: "Alert", message: "You our out of upload data", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+              switch action.style{
+              case .default:
+                    print("OK tapped")
+
+              case .cancel:
+                    print("cancel")
+
+              case .destructive:
+                    print("destructive")
+
+
+        }}))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -261,8 +344,8 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     func userPhotoUpload() {
         var component = URLComponents()
         component.scheme = "https"
-        component.host = "hiphopvolume.com"
-        component.path = "/upload"
+        component.host = "www.hiphopvolume.com"
+        component.path = "/userImageUpload"
         let editPF = EditPFStruct()
         let imageToServer = ImageToServer()
         let user_id = user_profile?.sub

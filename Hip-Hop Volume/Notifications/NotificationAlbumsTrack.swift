@@ -332,9 +332,9 @@ class NotificationAlbumsTrack: UIViewController {
         self.albumNameLabel?.translatesAutoresizingMaskIntoConstraints = false
         self.trackNameLabel?.translatesAutoresizingMaskIntoConstraints = false
                                                                      
-        albumNameLabel?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        albumNameLabel?.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
         
-        trackNameLabel?.topAnchor.constraint(equalTo: albumNameLabel!.bottomAnchor, constant: 20).isActive = true
+        trackNameLabel?.topAnchor.constraint(equalTo: albumNameLabel!.bottomAnchor, constant: 10).isActive = true
         
         albumNameLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         trackNameLabel?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -366,9 +366,9 @@ class NotificationAlbumsTrack: UIViewController {
         
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80).isActive = true
         
-        imageView.widthAnchor.constraint(equalToConstant: 320).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.27).isActive = true
         
-        imageView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
         
         imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
@@ -485,11 +485,11 @@ class NotificationAlbumsTrack: UIViewController {
         
         mySlider?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
-        mySlider?.topAnchor.constraint(equalTo: (self.trackNameLabel?.bottomAnchor)!, constant: 20).isActive = true
+        mySlider?.topAnchor.constraint(equalTo: (self.trackNameLabel?.bottomAnchor)!, constant: 10).isActive = true
         
         button?.centerXAnchor.constraint(equalTo: self.mySlider!.centerXAnchor).isActive = true
         
-        button?.topAnchor.constraint(equalTo: self.timeElapsedLabel.bottomAnchor, constant: 20).isActive = true
+        button?.topAnchor.constraint(equalTo: self.timeElapsedLabel.bottomAnchor, constant: 9).isActive = true
         
         button?.widthAnchor.constraint(equalToConstant: 50).isActive = true
         

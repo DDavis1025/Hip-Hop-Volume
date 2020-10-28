@@ -249,7 +249,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 
             self.myTableView?.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 
-            self.myTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+           self.myTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
            self.myTableView.estimatedRowHeight = 100
            self.myTableView.rowHeight = UITableView.automaticDimension

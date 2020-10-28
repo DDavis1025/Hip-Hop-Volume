@@ -11,7 +11,6 @@ import UIKit
 import Auth0
 import Lock
 import StoreKit
-import IAPReceiptVerifier
 
 let domain = "https://dev-owihjaep.auth0.com"
 let clientId = "vA4GjK6zABxVEbqtNLvs7t5IOqeFyWMJ"
@@ -29,7 +28,6 @@ class AuthVC: UIViewController {
     
     var auth = AuthStruct()
     
-    var verifier:IAPReceiptVerifier?
     
     
     override func viewDidLoad() {

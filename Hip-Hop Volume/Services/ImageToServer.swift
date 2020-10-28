@@ -44,7 +44,7 @@ class ImageToServer {
                     let responseString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                     print("****** response data = \(responseString!)")
 
-                    let json =  try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
+                    let json =  try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
 
                     print("json value \(json)")
 

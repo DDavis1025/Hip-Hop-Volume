@@ -43,7 +43,7 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
         view.backgroundColor = UIColor.white
         setupMenuBar()
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         print("!IsPurchased.isPurchased")
         addBannerViewToView(bannerView)
         
@@ -206,7 +206,7 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
         collectionView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor).isActive = true
         collectionView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
             collectionView.topAnchor.constraint(equalTo: bannerView.bottomAnchor).isActive = true
         } else {
             collectionView.topAnchor.constraint(equalTo: self.menuBar.bottomAnchor).isActive = true
@@ -266,7 +266,7 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
         var albumsCell:UICollectionViewCell?
         
         if indexPath.item == 1 {
-            if !IsPurchased.isPurchased {
+            if !IsPremiumPurchased.isPurchased {
             let tracksCell = collectionView.dequeueReusableCell(withReuseIdentifier: tracksId, for: indexPath) as! TracksCell
             tracksCell.parent = self
             return tracksCell
@@ -276,7 +276,7 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
                 return tracksCell
             }
         } else if indexPath.item == 2 {
-            if !IsPurchased.isPurchased {
+            if !IsPremiumPurchased.isPurchased {
             let videoCell = collectionView.dequeueReusableCell(withReuseIdentifier: videoId, for: indexPath) as! VideoCell
             videoCell.parent = self
             return videoCell
@@ -287,7 +287,7 @@ class HomeViewController: Toolbar, UICollectionViewDelegate, UICollectionViewDat
          }
         }
         
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AlbumCell
          cell.parent = self
          return cell

@@ -35,7 +35,7 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.setToolbarHidden(false, animated: false)
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         addBannerViewToView(bannerView)
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -111,7 +111,7 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
         myTableView.delaysContentTouches = false
         self.view.addSubview(self.myTableView)
 
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         self.myTableView?.topAnchor.constraint(equalTo: bannerView.bottomAnchor).isActive = true
         } else {
             self.myTableView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

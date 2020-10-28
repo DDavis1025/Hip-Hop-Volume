@@ -120,7 +120,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
             view.addSubview(imageView.view)
         }
         
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         
@@ -439,7 +439,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     }
     
     @objc func goBackBtnClicked(_: UIButton) {
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
             if NumberOfNext.numberOfNext <= 10 {
                 var number = NumberOfNext.numberOfNext
                 number += 1
@@ -471,7 +471,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     }
     
     @objc func goForwardBtnClicked(_: UIButton) {
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
             if NumberOfNext.numberOfNext <= 10 {
                 goForwardFunctions()
                 var number = NumberOfNext.numberOfNext
@@ -724,7 +724,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         
         albumTracksBtn?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         albumTracksBtn?.bottomAnchor.constraint(equalTo: bannerView.topAnchor, constant: -15).isActive = true
         } else {
             albumTracksBtn?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true

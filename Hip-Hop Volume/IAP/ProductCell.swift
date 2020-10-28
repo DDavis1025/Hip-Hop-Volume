@@ -42,7 +42,7 @@ class ProductCell: UITableViewCell {
      
       textLabel?.text = product.localizedTitle
      
-      if IsPurchased.isPurchased {
+      if !IsPremiumPurchased.isPurchased {
         accessoryType = .checkmark
         accessoryView = nil
         detailTextLabel?.text = ""

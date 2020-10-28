@@ -395,7 +395,7 @@ struct AddPurchase {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
+        let resourceString = "http://192.168.1.150:8000/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL

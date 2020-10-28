@@ -366,6 +366,7 @@ struct ManagementAccessToken: Decodable {
 final class Purchase: Codable {
     var user_id:String?
     var productIdentifier:String?
+    var time_added:String?
     
     init(user_id:String, productIdentifier:String) {
         self.user_id = user_id
@@ -374,12 +375,28 @@ final class Purchase: Codable {
 }
 
 
-struct IsPurchased {
+struct IsPremiumPurchased: Codable {
     static var isPurchased:Bool = false
     
     func updateIsPurchased(newBool:Bool) {
-        IsPurchased.self.isPurchased = newBool
+        IsPremiumPurchased.self.isPurchased = newBool
     }
+}
+
+struct Premium: Codable {
+    var user_id:String?
+    var plan:String?
+    var id:String?
+    var customer_id:String?
+    var status:String?
+    var paymentmethodid:String?
+}
+
+
+struct DataUsage: Codable {
+    var size:Int?
+    var overPremium:Bool?
+    var overFree:Bool?
 }
 
 

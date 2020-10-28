@@ -148,7 +148,7 @@ class TrackPlayVC: UIViewController, GADInterstitialDelegate {
 //            // add the spinner view controller
 //        }
         
-        if !IsPurchased.isPurchased {
+        if !IsPremiumPurchased.isPurchased {
         if NumberOfNext.numberOfNext == 10 {
             adShow = true
             print("NumberOfNext.numberOfNext == 2")

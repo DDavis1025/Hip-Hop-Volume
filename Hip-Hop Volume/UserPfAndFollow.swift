@@ -93,7 +93,7 @@ class UserPfAndFollow: UIViewController, FollowDelegateProtocol {
         
         addActionToFlwBtn()
     
-        view.backgroundColor = UIColor.yellow
+        view.backgroundColor = .clear
         
         view.bringSubviewToFront(followButton)
 
