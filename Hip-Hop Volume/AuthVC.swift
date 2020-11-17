@@ -136,6 +136,13 @@ class AuthVC: UIViewController {
            $0.closable = true
         }
         .withOptions {
+           $0.termsOfService = "https://192.168.1.150:3000/mobile-terms-of-service"
+           $0.privacyPolicy = "https://192.168.1.150:3000/mobile-privacy-policy"
+        }
+        .withOptions {
+           $0.showTerms = true
+         }
+        .withOptions {
             $0.logLevel = .all
             $0.logHttpRequest = true
             $0.loginAfterSignup = false

@@ -175,9 +175,10 @@ class UsernameTextField: Toolbar, UITextFieldDelegate {
                         }
                         self.navigationController?.popViewController(animated: true)
                         } else {
-                            self.updateUsernamePostgre()
+                            self.updateUser.updateUserInfo(parameters: ["username": self.userTextField.text!], user_id: self.user_profile!.sub) {
                             self.delegate?.sendDataToEditProfileVC(myData: true)
                             self.navigationController?.popViewController(animated: true)
+                          }
                          }
                         }
                       }

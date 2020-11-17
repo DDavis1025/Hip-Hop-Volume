@@ -58,7 +58,7 @@ struct UpdateUser {
     let resourceURL:URL
     
     init(endpoint:String) {
-        let resourceString = "https://hiphopvolume.com/\(endpoint)"
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
         
         self.resourceURL = resourceURL

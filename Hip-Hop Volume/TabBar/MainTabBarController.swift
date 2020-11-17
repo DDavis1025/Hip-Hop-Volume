@@ -15,7 +15,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     var isPurchased:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkForPremium(completion: {})
         print("profile sub \(profile!.sub)")
         setUpTabBar()
         view.backgroundColor = UIColor.white
@@ -63,9 +62,11 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         premiumVC.tabBarItem.selectedImage = premiumFill
         premiumVC.tabBarItem.title = "Premium"
         
+        checkForPremium(completion: {
         self.viewControllers = [homeFeedController, uploadVC, notificationVC, profileVC, premiumVC]
-        
         self.checkForNew(tabItem: (self.tabBar.items?[1])!)
+        })
+        
         
 //        self.viewControllers = [homeFeedController, notificationVC, profileVC, noAdsVC]
 //        self.checkForNew(tabItem: (self.tabBar.items?[1])!)
@@ -93,6 +94,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         if let user_id = profile?.sub {
         GETPremium(user_id: user_id).getPremium(completion: {
             print("\($0) premium user")
+            if $0.count > 0 {
             if let status = $0[0].status {
             if status == "active" {
                 self.isPurchased = true
@@ -106,7 +108,12 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let purchase = IsPremiumPurchased()
                 purchase.updateIsPurchased(newBool: false)
             }
-           }
+            }
+           } else {
+            completion()
+            let purchase = IsPremiumPurchased()
+            purchase.updateIsPurchased(newBool: false)
+        }
           })
         }
     }

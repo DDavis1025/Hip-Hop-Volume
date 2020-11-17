@@ -242,17 +242,22 @@ class GetUsersById {
                 print("Error Getusersbyid \(error)")
                 return
             }
+            guard let data = data else {
+               return
+            }
+            guard let posts = try? JSONDecoder().decode(UsersModel.self, from: data) else {
+              print("Unable to decode data")
+               completion([])
+              return
+             }
+
+               DispatchQueue.main.async {
+                   completion([posts])
+               }
             
             print("request now \(response)")
             
-            let posts = try!
-                
-                JSONDecoder().decode(UsersModel.self, from: data!); DispatchQueue.main.async {
-                    completion([posts])
-                    print("posts this \([posts])")
-                    print("request URL \(requestUrl)")
                     
-            }
         }
         dataTask?.resume()
         
@@ -1416,7 +1421,7 @@ class GETFollows: Identifiable {
     func getFollows(completion: @escaping ([Follow]) -> ()) {
         var components = URLComponents()
            components.scheme = "https"
-           components.host = "hiphopvolume.com"
+           components.host = "www.hiphopvolume.com"
            components.path = "/\(path)/\(user_id)/\(follower_id)"
         
         print("get by id url \(components.url?.absoluteString)")
@@ -1585,6 +1590,7 @@ class GETUser: Identifiable {
             
              guard let responseData = try? JSONDecoder().decode([UsersModel2].self, from: data) else {
                print("Unable to decode data")
+                completion([])
                return
               }
                
@@ -1714,9 +1720,8 @@ class GETPremium: Identifiable {
     func getPremium(completion: @escaping ([Premium]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "192.168.1.150"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/get-premium-user/\(user_id)"
         
 
@@ -1767,9 +1772,8 @@ class GETDataUsage: Identifiable {
     func getDataUsage(completion: @escaping ([DataUsage]) -> ()) {
         
         var components = URLComponents()
-                  components.scheme = "http"
-                  components.host = "192.168.1.150"
-                  components.port = 8000
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
                   components.path = "/dataUsage/\(user_id)"
         
 

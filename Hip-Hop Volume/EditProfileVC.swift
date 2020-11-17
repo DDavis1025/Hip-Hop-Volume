@@ -156,6 +156,7 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
         if let user_id = user_profile?.sub {
         GETPremium(user_id: user_id).getPremium(completion: {
             print("\($0) premium user")
+            if $0.count > 0 {
             if let status = $0[0].status {
             if status == "active" {
                 self.isPurchased = true
@@ -171,6 +172,12 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
                 purchase.updateIsPurchased(newBool: false)
             }
            }
+            } else {
+                completion()
+                self.isPurchased = false
+                let purchase = IsPremiumPurchased()
+                purchase.updateIsPurchased(newBool: false)
+            }
           })
         }
     }
@@ -314,7 +321,7 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     }
     
     func showOutOfPremiumData() {
-        let alert = UIAlertController(title: "Alert", message: "You our out of upload data", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Alert", message: "You are out of upload data", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
               switch action.style{
               case .default:
