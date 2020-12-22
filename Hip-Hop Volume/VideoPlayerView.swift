@@ -445,12 +445,12 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-5763356067547990/9180736314"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
-        addCommentsButton()
-        addCommentsBtnConstraints()
+//        addCommentsButton()
+//        addCommentsBtnConstraints()
         addLikeButton()
         addLikeBtnConstraints()
         postLikeCount()
@@ -513,7 +513,7 @@ class VideoVC: UIViewController, GADInterstitialDelegate {
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-      interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+      interstitial = GADInterstitial(adUnitID: "ca-app-pub-5763356067547990/1952982982")
       interstitial.delegate = self as? GADInterstitialDelegate
       interstitial.load(GADRequest())
       return interstitial
@@ -715,12 +715,15 @@ extension VideoVC {
     
     func addLikeBtnConstraints() {
         likeBtn?.translatesAutoresizingMaskIntoConstraints = false
-        guard let commentsBtn = commentsBtn else {
-            return
-        }
-        likeBtn?.centerYAnchor.constraint(equalTo: commentsBtn.centerYAnchor).isActive = true
+//        guard let commentsBtn = commentsBtn else {
+//            return
+//        }
+//        likeBtn?.centerYAnchor.constraint(equalTo: commentsBtn.centerYAnchor).isActive = true
         
-        likeBtn?.centerXAnchor.constraint(equalTo: commentsBtn.centerXAnchor, constant: -80).isActive = true
+        likeBtn?.bottomAnchor.constraint(equalTo: bannerView.topAnchor, constant: -20).isActive = true
+        likeBtn?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+//        likeBtn?.centerXAnchor.constraint(equalTo: commentsBtn.centerXAnchor, constant: -80).isActive = true
     }
     
     func postLikeCount() {

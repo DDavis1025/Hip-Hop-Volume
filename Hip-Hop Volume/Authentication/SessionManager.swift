@@ -24,7 +24,7 @@ class SessionManager {
          _ = self.authentication.logging(enabled: true) // API Logging
     }
 
-    func retrieveProfile(_ callback: @escaping (Error?) -> ()) {
+    func retrieveProfile(_ callback: @escaping (Error?) -> (), completion: @escaping (UserInfo) -> ()) {
         guard let accessToken = self.credentials?.accessToken
             else { return callback(CredentialsManagerError.noCredentials) }
         self.authentication
@@ -35,6 +35,7 @@ class SessionManager {
                     self.profile = profile
                     self.accessToken = accessToken
                     print("credentials?.access \(self.credentials?.accessToken)")
+                    completion(profile)
                     callback(nil)
                 case .failure(let error):
                     callback(error)

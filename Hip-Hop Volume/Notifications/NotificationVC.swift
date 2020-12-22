@@ -38,7 +38,7 @@ class NotificationVC: Toolbar, UITableViewDelegate, UITableViewDataSource {
         if !IsPremiumPurchased.isPurchased {
         addBannerViewToView(bannerView)
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-5763356067547990/9180736314"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         }

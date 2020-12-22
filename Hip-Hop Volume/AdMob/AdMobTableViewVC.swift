@@ -21,7 +21,7 @@ class AdMobVC: UIViewController, UITableViewDelegate, UITableViewDataSource, GAD
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
         multipleAdsOptions.numberOfAds = 5
 
-        adLoader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: self,
+        adLoader = GADAdLoader(adUnitID: "ca-app-pub-5763356067547990/7141730487", rootViewController: self,
             adTypes: [GADAdLoaderAdType.unifiedNative],
             options: [multipleAdsOptions])
         adLoader.delegate = self

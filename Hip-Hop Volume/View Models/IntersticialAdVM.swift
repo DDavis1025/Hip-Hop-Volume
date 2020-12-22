@@ -14,7 +14,7 @@ class IntersticialAdVM: NSObject, GADInterstitialDelegate {
     var interstitial: GADInterstitial!
     
     func createAndLoadInterstitial() -> GADInterstitial {
-      interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+      interstitial = GADInterstitial(adUnitID: "ca-app-pub-5763356067547990/1952982982")
       interstitial.delegate = self as? GADInterstitialDelegate
       interstitial.load(GADRequest())
       return interstitial

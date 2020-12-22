@@ -99,7 +99,7 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     var userInfoArr:[(title: String, value: String)] = []
     var myTableView:UITableView?
     var isPurchased:Bool?
-    var dataUsage:[DataUsage]?
+    var dataUsage: DataUsage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -286,7 +286,7 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
     
     @objc func doneTapped(sender: UIBarButtonItem) {
         if pictureAdded {
-            if let isPurchased = isPurchased, let overFree = dataUsage?[0].overFree, let overPremium = dataUsage?[0].overPremium  {
+            if let isPurchased = isPurchased, let overFree = dataUsage?.overFree, let overPremium = dataUsage?.overPremium  {
                 if (isPurchased && !overFree) {
                     //show alert
                     showUpdateToPremium()
@@ -296,13 +296,13 @@ class EditProfileVC: Toolbar, UITextFieldDelegate, UITableViewDelegate, UITableV
                 } else {
                     userPhotoUpload()
                 }
-         }
+          }
         }
-        
+
         self.navigationController?.popViewController(animated: true)
-        
+
     }
-    
+//
     func showUpdateToPremium() {
         let alert = UIAlertController(title: "Alert", message: "You are out of upload data", preferredStyle: UIAlertController.Style.alert)
 

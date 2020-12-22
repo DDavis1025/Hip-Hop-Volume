@@ -8,10 +8,11 @@
 
 import Foundation
 
-enum APIError:Error {
+enum APIError:String, Error {
     case responseProblem
     case decodingProblem
     case encodingProblem
+    case tooManyRequests = "Too many requests, please try again later."
 }
 
 struct FollowerPostRequest {
@@ -33,6 +34,7 @@ struct FollowerPostRequest {
             urlRequest.httpBody = try JSONEncoder().encode(followerToSave)
             
             let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
+                
                 guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
                     completion(.failure(.responseProblem))
                     return
@@ -352,6 +354,7 @@ final class Receipt: Codable {
 struct ReceiptValidation {
     let resourceURL:URL
     
+    
     init(endpoint:String) {
         let resourceString = "http://192.168.1.150:8000/\(endpoint)"
         guard let resourceURL = URL(string: resourceString) else {fatalError()}
@@ -420,6 +423,61 @@ struct AddPurchase {
                 do {
                     let purchase = try JSONDecoder().decode([Purchase].self, from: jsonData)
                     completion(.success(purchase))
+                } catch {
+                    completion(.failure(.decodingProblem))
+                }
+            }
+            dataTask.resume()
+        } catch {
+            completion(.failure(.encodingProblem))
+        }
+    }
+}
+
+
+struct Auth0User: Codable {
+    var user_id:String?
+    init(user_id: String) {
+        self.user_id = user_id
+    }
+}
+
+struct EmailVerification {
+    let resourceURL:URL
+    
+    init(endpoint:String) {
+        let resourceString = "https://www.hiphopvolume.com/\(endpoint)"
+        guard let resourceURL = URL(string: resourceString) else {fatalError()}
+        
+        self.resourceURL = resourceURL
+    }
+    
+    func save(_ purchase: Auth0User, completion: @escaping(Result<Auth0User, APIError>) -> Void) {
+        
+        do {
+            var urlRequest = URLRequest(url: resourceURL)
+            urlRequest.httpMethod = "POST"
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = try JSONEncoder().encode(purchase)
+            
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 429 {
+                            completion(.failure(.tooManyRequests))
+                            return
+                        } else {
+                            completion(.failure(.responseProblem))
+                            return
+                        }
+                    }
+                    return
+                }
+                
+                do {
+                    let emailVerification = try JSONDecoder().decode(Auth0User.self, from: jsonData)
+                    completion(.success(emailVerification))
                 } catch {
                     completion(.failure(.decodingProblem))
                 }

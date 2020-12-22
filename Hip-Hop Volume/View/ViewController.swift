@@ -39,7 +39,6 @@ class ViewController: Toolbar, UITableViewDelegate, UITableViewDataSource {
     var albumData = [PostById]() {
         didSet {
             DispatchQueue.main.async {
-                print("album data \(self.albumData[0].id)")
                 self.trackPaths()
                 let imagePath = self.albumData.filter { i in i.id == self.post.id
                 }

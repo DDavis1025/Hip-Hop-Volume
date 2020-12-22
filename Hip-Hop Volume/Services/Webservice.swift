@@ -16,6 +16,63 @@ struct AccessToken {
     }
 }
 
+class APICaller {
+    var isPaginating = false
+    var emptyData = false
+//    var offset:String = ""
+    
+//    init(offset:String?) {
+//        if let offset = offset {
+//        self.offset = offset
+//        }
+//    }
+    
+    func fetchData(pagination:Bool = false, offset:String, completion: @escaping ([Post]) -> ()) {
+        let queryItems = [URLQueryItem(name: "offset", value: offset)]
+        var components = URLComponents()
+        components.scheme = "http"
+        components.host = "localhost"
+        components.port = 8000
+        components.path = "/albums/"
+        components.queryItems = queryItems
+        
+        print("url now \(components.url!.absoluteString)")
+        guard let url = URL(string: components.url!.absoluteString)
+        else {
+        fatalError("URL is not correct!")
+        }
+        
+        if pagination {
+            isPaginating = true
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            if let error = error {
+                print("Error getting albums \(error)")
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            guard let posts = try? JSONDecoder().decode([Post].self, from: data) else {
+                print("Unable to decode posts")
+                self.emptyData = true
+                return
+            }
+            DispatchQueue.main.async {
+                completion(posts)
+                print(posts)
+                if pagination {
+                    print("self.isPaginating = false")
+                    self.isPaginating = false
+                }
+            }
+        }.resume()
+    }
+}
+
 class Webservice {
     func getAllPosts(completion: @escaping ([Post]) -> ()) {
         guard let url = URL(string: "https://hiphopvolume.com/albums")
@@ -252,7 +309,7 @@ class GetUsersById {
              }
 
                DispatchQueue.main.async {
-                   completion([posts])
+                completion([posts])
                }
             
             print("request now \(response)")
@@ -1769,7 +1826,7 @@ class GETDataUsage: Identifiable {
     }
     
         
-    func getDataUsage(completion: @escaping ([DataUsage]) -> ()) {
+    func getDataUsage(completion: @escaping (DataUsage) -> ()) {
         
         var components = URLComponents()
                   components.scheme = "https"
@@ -1796,14 +1853,74 @@ class GETDataUsage: Identifiable {
              guard let data = data else {
                 return
              }
-             guard let responseData = try? JSONDecoder().decode(DataUsage.self, from: data) else {
+            
+//            do {
+//              try JSONDecoder().decode([DataUsage].self, from: data)
+//            } catch(error) {
+//                console.log(error)
+//            }
+            
+            do {
+             let responseData = try JSONDecoder().decode(DataUsage.self, from: data)
+             DispatchQueue.main.async {
+                completion(responseData)
+             }
+            } catch {
+                print(error)
+            }
+
+            
+        }.resume()
+    }
+}
+
+
+class GETCopyrightInfo: Identifiable {
+    
+    var user_id:String = ""
+    init(user_id:String?) {
+        if let user_id = user_id {
+            self.user_id = user_id
+        }
+    }
+    
+        
+    func get(completion: @escaping ([Copyright]) -> ()) {
+        
+        var components = URLComponents()
+                  components.scheme = "https"
+                  components.host = "hiphopvolume.com"
+                  components.path = "/checkCopyrightInfringement/\(user_id)"
+        
+
+                  
+                 let url = components.url
+        
+                print("url \(url)")
+                
+                guard let requestUrl = url else { fatalError() }
+                var request = URLRequest(url: requestUrl)
+                request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            
+             if let error = error {
+                print("Error \(error)")
+             }
+            
+             guard let data = data else {
+                return
+             }
+             guard let responseData = try? JSONDecoder().decode([Copyright].self, from: data) else {
                print("Unable to decode data")
-                completion([])
+//                completion()
                return
               }
 
                 DispatchQueue.main.async {
-                    completion([responseData])
+                    completion(responseData)
+
                 }
             
         }.resume()

@@ -88,6 +88,8 @@
 		CDE0A6DA25252BBD008E38F3 /* ImagePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A6D925252BBD008E38F3 /* ImagePost.swift */; };
 		CDE0A6F825268B40008E38F3 /* GoToUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A6F725268B40008E38F3 /* GoToUpload.swift */; };
 		CDE0A7142549E0F0008E38F3 /* UpgradeToPremium.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A7132549E0F0008E38F3 /* UpgradeToPremium.swift */; };
+		CDE0A71E25682808008E38F3 /* VerifyEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A71D25682808008E38F3 /* VerifyEmailVC.swift */; };
+		CDE0A721256C5814008E38F3 /* CopyrightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE0A720256C5811008E38F3 /* CopyrightVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,9 +168,9 @@
 		CD06865C2511556C0002FB19 /* UsernameTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameTextField.swift; sourceTree = "<group>"; };
 		CD06865E2511556C0002FB19 /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		CD06865F2511556C0002FB19 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
-		CD0686B8251159E60002FB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0686BA25115D110002FB19 /* AdMobTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobTest.swift; sourceTree = "<group>"; };
 		CD0686BC2513B9120002FB19 /* NoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAds.swift; sourceTree = "<group>"; };
+		CD294769258D47C800E99016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD711D46252245BB008A3ED6 /* AlbumsCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsCellNoAds.swift; sourceTree = "<group>"; };
 		CD711D5725224C05008A3ED6 /* VideoCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellNoAds.swift; sourceTree = "<group>"; };
 		CD711D5A25224E3A008A3ED6 /* TracksCellNoAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksCellNoAds.swift; sourceTree = "<group>"; };
@@ -176,6 +178,8 @@
 		CDE0A6D925252BBD008E38F3 /* ImagePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePost.swift; sourceTree = "<group>"; };
 		CDE0A6F725268B40008E38F3 /* GoToUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToUpload.swift; sourceTree = "<group>"; };
 		CDE0A7132549E0F0008E38F3 /* UpgradeToPremium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeToPremium.swift; sourceTree = "<group>"; };
+		CDE0A71D25682808008E38F3 /* VerifyEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailVC.swift; sourceTree = "<group>"; };
+		CDE0A720256C5811008E38F3 /* CopyrightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyrightVC.swift; sourceTree = "<group>"; };
 		CE60EC5D62F09613A7A632B9 /* Pods_Hip_Hop_Volume.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hip_Hop_Volume.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,7 +235,6 @@
 				CD06862D2511556A0002FB19 /* Auth0.plist */,
 				CD06860E251155690002FB19 /* Authentication */,
 				CD0686492511556B0002FB19 /* AuthorizationServer.swift */,
-				CD0686422511556B0002FB19 /* AuthVC.swift */,
 				CD068611251155690002FB19 /* Comments */,
 				CD0686452511556B0002FB19 /* CustomToolBar.swift */,
 				CD0686472511556B0002FB19 /* EditProfileVC.swift */,
@@ -246,7 +249,6 @@
 				CD068608251155690002FB19 /* ProfileViewController.swift */,
 				CD068602251155680002FB19 /* SceneDelegate.swift */,
 				CD0686512511556C0002FB19 /* Services */,
-				CD06865B2511556C0002FB19 /* SessionManager.swift */,
 				CD06863F2511556B0002FB19 /* Spinner.swift */,
 				CD06863C2511556A0002FB19 /* TabBar */,
 				CD06865E2511556C0002FB19 /* Toolbar.swift */,
@@ -260,9 +262,10 @@
 				CD06861B251155690002FB19 /* View */,
 				CD0686362511556A0002FB19 /* View Models */,
 				CD0685FF251155670002FB19 /* Hip-Hop Volume-Bridging-Header.h */,
-				CD0686B8251159E60002FB19 /* Info.plist */,
 				CD0686BA25115D110002FB19 /* AdMobTest.swift */,
 				CDE0A6F725268B40008E38F3 /* GoToUpload.swift */,
+				CDE0A720256C5811008E38F3 /* CopyrightVC.swift */,
+				CD294769258D47C800E99016 /* Info.plist */,
 			);
 			path = "Hip-Hop Volume";
 			sourceTree = "<group>";
@@ -292,7 +295,10 @@
 		CD06860E251155690002FB19 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				CD06865B2511556C0002FB19 /* SessionManager.swift */,
+				CD0686422511556B0002FB19 /* AuthVC.swift */,
 				CD06860F251155690002FB19 /* SignUpVC.swift */,
+				CDE0A71D25682808008E38F3 /* VerifyEmailVC.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 				CD0686B22511556C0002FB19 /* Toolbar.swift in Sources */,
 				CD06866E2511556C0002FB19 /* CommentVC.swift in Sources */,
 				CD0686782511556C0002FB19 /* ProfileVC.swift in Sources */,
+				CDE0A721256C5814008E38F3 /* CopyrightVC.swift in Sources */,
 				CD0686892511556C0002FB19 /* Models.swift in Sources */,
 				CD0686A02511556C0002FB19 /* AuthorizationServer.swift in Sources */,
 				CD0686952511556C0002FB19 /* TracksCell.swift in Sources */,
@@ -592,6 +599,7 @@
 				CD06868F2511556C0002FB19 /* PostListViewModel.swift in Sources */,
 				CD0686982511556C0002FB19 /* VideoCell.swift in Sources */,
 				CD0686612511556C0002FB19 /* AlbumsCell.swift in Sources */,
+				CDE0A71E25682808008E38F3 /* VerifyEmailVC.swift in Sources */,
 				CD06867C2511556C0002FB19 /* TrackPlay.swift in Sources */,
 				CD0686832511556C0002FB19 /* AlbumTrackVC.swift in Sources */,
 				CD06869C2511556C0002FB19 /* CustomToolBar.swift in Sources */,

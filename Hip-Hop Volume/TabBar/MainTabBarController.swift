@@ -65,6 +65,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         checkForPremium(completion: {
         self.viewControllers = [homeFeedController, uploadVC, notificationVC, profileVC, premiumVC]
         self.checkForNew(tabItem: (self.tabBar.items?[1])!)
+            self.getCopyrightInfo()
         })
         
         
@@ -116,6 +117,20 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
           })
         }
+    }
+    
+    func getCopyrightInfo() {
+        print("done getCopyrightInfo")
+        if let user_id = profile?.sub {
+        GETCopyrightInfo(user_id: user_id).get {
+        print("done $0 \($0)")
+            if $0.count > 0 {
+                if $0[0].message != nil {
+                self.present(CopyrightVC(data: $0), animated: true, completion: nil)
+               }
+            }
+         }
+       }
     }
     
 //    func checkForPremium(completion: @escaping(()->())) {

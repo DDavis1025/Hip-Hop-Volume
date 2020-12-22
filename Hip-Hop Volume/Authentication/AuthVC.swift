@@ -136,8 +136,8 @@ class AuthVC: UIViewController {
            $0.closable = true
         }
         .withOptions {
-           $0.termsOfService = "https://192.168.1.150:3000/mobile-terms-of-service"
-           $0.privacyPolicy = "https://192.168.1.150:3000/mobile-privacy-policy"
+           $0.termsOfService = "https://www.hiphopvolume.com/terms-of-service.html"
+           $0.privacyPolicy = "https://www.hiphopvolume.com/privacy-policy.html"
         }
         .withOptions {
            $0.showTerms = true
@@ -145,7 +145,6 @@ class AuthVC: UIViewController {
         .withOptions {
             $0.logLevel = .all
             $0.logHttpRequest = true
-            $0.loginAfterSignup = false
             $0.parameters = ["prompt" : "select_account"]
         }
         .withStyle {
@@ -162,11 +161,26 @@ class AuthVC: UIViewController {
             } else {
                 SessionManager.shared.retrieveProfile { error in
                     DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(MainTabBarController(), animated: true)
                         guard error == nil else {
                             print("Failed to retrieve profile: \(String(describing: error))")
                             return
                         }
+                    }
+                } completion: { profile in
+                    print("$0 profile \(profile.emailVerified)")
+                    DispatchQueue.main.async {
+//                        self.navigationController?.pushViewController(MainTabBarController(), animated: true)
+                        if let email_verified = profile.emailVerified {
+                            if !email_verified {
+                                self.navigationController?.pushViewController(MainTabBarController(), animated: true)
+//                                self.navigationController?.pushViewController(CopyrightVC(), animated: true)
+//                            self.navigationController?.pushViewController(VerifyEmailVC(), animated: true)
+                        } else {
+                            
+//                            self.navigationController?.pushViewController(CopyrightVC(), animated: true)
+                            self.navigationController?.pushViewController(MainTabBarController(), animated: true)
+                        }
+                      }
                     }
                 }
             }

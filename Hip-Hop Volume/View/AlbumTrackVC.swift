@@ -124,15 +124,15 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-5763356067547990/9180736314"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         }
         
         
         setupConstraints()
-        addCommentsButton()
-        addCommentsBtnConstraints()
+//        addCommentsButton()
+//        addCommentsBtnConstraints()
         addLikeButton()
         addLikeBtnConstraints()
         postLikeCount()
@@ -172,7 +172,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-5763356067547990/1952982982")
         interstitial.delegate = self as? GADInterstitialDelegate
         interstitial.load(GADRequest())
         return interstitial
@@ -461,7 +461,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                 intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
                 //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
                 print("intersticial album track \(intersticialAdVM.interstitial)")
-                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-5763356067547990/1952982982")
                 //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
                 TrackPlayVC.shared.interstitial?.load(GADRequest())
             }
@@ -494,7 +494,7 @@ class AlbumTrackVC: UIViewController, GADInterstitialDelegate {
                 intersticialAdVM.interstitial = intersticialAdVM.createAndLoadInterstitial()
                 //            TrackPlayVC.shared.interstitial = intersticialAdVM.interstitial
                 print("intersticial album track \(intersticialAdVM.interstitial)")
-                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/5135589807")
+                TrackPlayVC.shared.interstitial = GADInterstitial(adUnitID: "ca-app-pub-5763356067547990/1952982982")
                 //            TrackPlayVC.shared.interstitial.delegate = TrackPlayVC.self as? GADInterstitialDelegate
                 TrackPlayVC.shared.interstitial?.load(GADRequest())
             }

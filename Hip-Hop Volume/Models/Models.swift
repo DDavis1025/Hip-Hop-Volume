@@ -51,6 +51,7 @@ struct UsersModel: Codable {
     var picture:String?
     var user_id:String?
     var email:String?
+    var email_verified:Bool?
 }
 
 struct UsersModel2: Codable {
@@ -394,9 +395,14 @@ struct Premium: Codable {
 
 
 struct DataUsage: Codable {
-    var size:Int?
+    var size:Double?
     var overPremium:Bool?
     var overFree:Bool?
+}
+
+struct Copyright: Codable {
+    var message:String?
+    var count:Int?
 }
 
 

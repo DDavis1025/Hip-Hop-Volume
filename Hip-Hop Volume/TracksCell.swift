@@ -50,7 +50,7 @@ class TracksCell: AlbumCell {
                 self.refresher?.endRefreshing()
                 self.fromRefresh = true
                 self.posts = $0
-                self.addNativeAds()
+                self.addNativeAds(completion: {})
                 self.myTableView.reloadData()
                 self.myTableView?.beginUpdates()
                 self.myTableView?.endUpdates()

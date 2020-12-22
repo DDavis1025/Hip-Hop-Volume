@@ -14,8 +14,16 @@ protocol MyCollectionViewCellDelegate: class {
     func didPressTVCell()
 }
 
-class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITableViewDelegate, UITableViewDataSource {
+struct AlbumsCellVM {
+    static var offset:Int = 0
+    
+    func updateOffset(newInt:Int) {
+        AlbumsCellVM.self.offset = newInt
+    }
+}
+class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
        var myTableView: UITableView!
+       private let apiCaller = APICaller()
        var mainArray:[Any] = [] 
        var adLoader: GADAdLoader!
        var nativeAds = [GADUnifiedNativeAd]()
@@ -45,7 +53,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
                group.notify(queue: .main) {
                 self.usersLoaded = true
                 DispatchQueue.main.async {
-                self.myTableView.reloadData()
+//                self.myTableView.reloadData()
                 }
 //                self.spinner.stopAnimating()
 //                self.view.removeFromSuperview()
@@ -61,6 +69,8 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 //            self.child?.willMove(toParent: nil)
 //            self.child?.view.removeFromSuperview()
 //            self.child?.removeFromParent()
+            self.spinner.stopAnimating()
+            self.view.removeFromSuperview()
             DispatchQueue.main.async {
                 if self.fromRefresh == false {
                 self.myTableView.reloadData()
@@ -107,7 +117,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
                  }
                }
             
-             mainArray = posts
+            mainArray = posts
                
          }
        }
@@ -116,6 +126,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
        var imageLoader:DownloadImage?
        var refresher:UIRefreshControl?
        weak var delegate:MyCollectionViewCellDelegate?
+       var offset:Int = 0
        
        var components:URLComponents = {
               var component = URLComponents()
@@ -146,25 +157,32 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
     }
     
     func addMainMethods() {
-        Webservice().getAllPosts {
-                    self.posts = $0
-                }
+        addTableView()
+        apiCaller.fetchData(pagination: false, offset: "\(0)", completion: { [self] in
+            self.posts.append(contentsOf: $0)
+//            adSettings()
+//            self.posts = $0
+        })
+//        offset += 20
+//        Webservice().getAllPosts {
+//                    self.posts = $0
+//                }
         
         refresher = UIRefreshControl()
         refresher?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refresher?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         
-        addTableView()
+//        addTableView()
         myTableView.addSubview(refresher!)
         addSpinner()
-        adSettings()
+//        adSettings()
     }
     
     func adSettings() {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
         multipleAdsOptions.numberOfAds = 5
 
-        adLoader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: parent,
+        adLoader = GADAdLoader(adUnitID: "ca-app-pub-5763356067547990/7141730487", rootViewController: parent,
             adTypes: [GADAdLoaderAdType.unifiedNative],
             options: [multipleAdsOptions])
         adLoader.delegate = self
@@ -173,15 +191,27 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 
     
     @objc func refresh() {
-        Webservice().getAllPosts {
-            self.refresher?.endRefreshing()
-            self.fromRefresh = true
-            self.posts = $0
-            self.addNativeAds()
-            self.myTableView.reloadData()
-            self.myTableView?.beginUpdates()
-            self.myTableView?.endUpdates()
-        }
+//        APICaller(offset: "\(offset)").fetchData(pagination: <#T##Bool#>, completion: {
+//            self.refresher?.endRefreshing()
+//            self.fromRefresh = true
+//            self.posts = $0
+//            self.addNativeAds()
+//            self.myTableView.reloadData()
+//            self.myTableView?.beginUpdates()
+//            self.myTableView?.endUpdates()
+//        })
+//        let albumVM = AlbumsCellVM()
+//        let offset:Int = AlbumsCellVM.self.offset + 20
+//        albumVM.updateOffset(newInt: offset)
+//        Webservice().getAllPosts {
+//            self.refresher?.endRefreshing()
+//            self.fromRefresh = true
+//            self.posts = $0
+//            self.addNativeAds()
+//            self.myTableView.reloadData()
+//            self.myTableView?.beginUpdates()
+//            self.myTableView?.endUpdates()
+//        }
         
     }
     
@@ -276,13 +306,25 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
     
     func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
         print("self cell \(self)")
-        addNativeAds()
-        myTableView.reloadData()
+        addNativeAds(completion: {
+            DispatchQueue.main.async {
+              self.myTableView.tableFooterView = nil
+            }
+        })
+//        DispatchQueue.main.async {
+//          self.myTableView.tableFooterView = nil
+//        }
+        DispatchQueue.main.async {
+        self.myTableView.reloadData()
         self.myTableView?.beginUpdates()
         self.myTableView?.endUpdates()
         self.spinner.stopAnimating()
         self.view.removeFromSuperview()
         self.refresher?.endRefreshing()
+        }
+//        DispatchQueue.main.async {
+//          self.myTableView.tableFooterView = nil
+//        }
 //        self.child?.willMove(toParent: nil)
 //        self.child?.view.removeFromSuperview()
 //        self.child?.removeFromParent()
@@ -290,7 +332,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 //        self.myTableView?.endUpdates()
     }
     
-    func addNativeAds() {
+    func addNativeAds(completion: @escaping(()->())) {
       if nativeAds.count <= 0 {
         return
       }
@@ -302,6 +344,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
         if index < mainArray.count {
           mainArray.insert(nativeAd, at: index)
           index += adInterval
+          completion()
         } else {
           break
         }
@@ -331,6 +374,25 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
     
     func tableView(_ tableView: UITableView,
             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (!apiCaller.emptyData) {
+            if indexPath.row == posts.count - 1 {
+            if !apiCaller.isPaginating {
+            self.myTableView.tableFooterView = createSpinnerFooter()
+            offset += 20
+            apiCaller.fetchData(pagination: true, offset: "\(offset)", completion: {
+                self.posts.append(contentsOf: $0)
+                print("self.mainArray.count \(self.mainArray.count)")
+//                self.adSettings()
+//              DispatchQueue.main.async {
+//                 self.myTableView.tableFooterView = nil
+//               }
+            })
+        }
+      }
+       } else {
+            self.myTableView.tableFooterView = nil
+        }
+        
 
         if let post = mainArray[indexPath.row] as? Post {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell") as! FeedCell
@@ -356,6 +418,73 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
             return nativeAdCell
           }
         }
+    
+    private func createSpinnerFooter() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        
+        spinner.startAnimating()
+        
+        return footerView
+    }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let position = scrollView.contentOffset.y
+//        if (!apiCaller.emptyData) {
+//        if position > (myTableView.contentSize.height-100-scrollView.frame.size.height) {
+//            guard !apiCaller.isPaginating else {
+//                // we are already fetching more data
+//                print("we are already fetching more data")
+//                return
+//            }
+//            self.myTableView.tableFooterView = createSpinnerFooter()
+//            offset += 20
+//            apiCaller.fetchData(pagination: true, offset: "\(offset)", completion: {
+//                self.posts.append(contentsOf: $0)
+//                print("self.mainArray.count \(self.mainArray.count)")
+//                self.adSettings()
+////               DispatchQueue.main.async {
+////                 self.myTableView.tableFooterView = nil
+////               }
+//            })
+//        }
+//       } else {
+//            self.myTableView.tableFooterView = nil
+//        }
+//    }
+//
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//
+//        // UITableView only moves in one direction, y axis
+//        let currentOffset = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+//
+//        // Change 10.0 to adjust the distance from bottom
+//        if maximumOffset - currentOffset <= 10.0 {
+//            if (!apiCaller.emptyData) {
+//                guard !apiCaller.isPaginating else {
+//                    // we are already fetching more data
+//                    print("we are already fetching more data")
+//                    return
+//                }
+//                self.myTableView.tableFooterView = createSpinnerFooter()
+//                offset += 20
+//                apiCaller.fetchData(pagination: true, offset: "\(offset)", completion: {
+//                    self.posts.append(contentsOf: $0)
+//                    print("self.mainArray.count \(self.mainArray.count)")
+//                    self.adSettings()
+//    //                DispatchQueue.main.async {
+//    //                  self.myTableView.tableFooterView = nil
+//    //                }
+//                })
+//           } else {
+//                self.myTableView.tableFooterView = nil
+//            }
+//        }
+//    }
 
     
     
