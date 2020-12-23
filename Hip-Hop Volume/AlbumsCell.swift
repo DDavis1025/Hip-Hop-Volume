@@ -69,15 +69,15 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
 //            self.child?.willMove(toParent: nil)
 //            self.child?.view.removeFromSuperview()
 //            self.child?.removeFromParent()
-            self.spinner.stopAnimating()
-            self.view.removeFromSuperview()
-            DispatchQueue.main.async {
-                if self.fromRefresh == false {
-                self.myTableView.reloadData()
-                self.myTableView?.beginUpdates()
-                self.myTableView?.endUpdates()
-              }
-            }
+//            self.spinner.stopAnimating()
+//            self.view.removeFromSuperview()
+//            DispatchQueue.main.async {
+//                if self.fromRefresh == false {
+//                self.myTableView.reloadData()
+//                self.myTableView?.beginUpdates()
+//                self.myTableView?.endUpdates()
+//              }
+//            }
             
             print("posts right now \(posts)")
             
@@ -160,7 +160,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
         addTableView()
         apiCaller.fetchData(pagination: false, offset: "\(0)", completion: { [self] in
             self.posts.append(contentsOf: $0)
-//            adSettings()
+            adSettings()
 //            self.posts = $0
         })
 //        offset += 20
@@ -180,7 +180,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
     
     func adSettings() {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
-        multipleAdsOptions.numberOfAds = 5
+        multipleAdsOptions.numberOfAds = 3
 
         adLoader = GADAdLoader(adUnitID: "ca-app-pub-5763356067547990/7141730487", rootViewController: parent,
             adTypes: [GADAdLoaderAdType.unifiedNative],
@@ -306,11 +306,11 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
     
     func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
         print("self cell \(self)")
-        addNativeAds(completion: {
-            DispatchQueue.main.async {
-              self.myTableView.tableFooterView = nil
-            }
-        })
+//        addNativeAds(completion: {
+//            DispatchQueue.main.async {
+//              self.myTableView.tableFooterView = nil
+//            }
+//        })
 //        DispatchQueue.main.async {
 //          self.myTableView.tableFooterView = nil
 //        }
@@ -322,6 +322,11 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
         self.view.removeFromSuperview()
         self.refresher?.endRefreshing()
         }
+        addNativeAds(completion: {
+            DispatchQueue.main.async {
+              self.myTableView.tableFooterView = nil
+            }
+        })
 //        DispatchQueue.main.async {
 //          self.myTableView.tableFooterView = nil
 //        }
@@ -382,7 +387,7 @@ class AlbumCell: UICollectionViewCell, GADUnifiedNativeAdLoaderDelegate, UITable
             apiCaller.fetchData(pagination: true, offset: "\(offset)", completion: {
                 self.posts.append(contentsOf: $0)
                 print("self.mainArray.count \(self.mainArray.count)")
-//                self.adSettings()
+                self.adSettings()
 //              DispatchQueue.main.async {
 //                 self.myTableView.tableFooterView = nil
 //               }
